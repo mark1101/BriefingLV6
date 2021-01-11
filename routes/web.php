@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('home', function () {
+    return redirect('/inicio');
+});
+
 Route::group(['prefix' => '/cliente'], function (){
     Route::get('/cadastro' , 'ClienteController@indexCadastro')->name('indexClienteCadastro');
     Route::get('/show' , 'ClienteController@indexShow')->name('indexClienteShow');
@@ -29,3 +33,7 @@ Route::group(['prefix' => '/cliente'], function (){
 Route::get('/inicio' , function (){
    return view('dashboardUser');
 })->name('inicio');
+
+Route::get('/loginn' , function (){
+    return view('login');
+})->name('logo');

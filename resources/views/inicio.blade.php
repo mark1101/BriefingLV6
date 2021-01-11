@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="UTF-8"/>
@@ -10,21 +11,23 @@
 </head>
 <body style="background-image: url({{asset('img/fundo.png')}}) ; background-repeat: no-repeat; background-position: right ; bottom: 0 ; overflow: auto;">
 <!-- Conteúdo -->
+<nav class="navbar navbar-expand-lg navbar-light ">
+    <img alt="Erro ao carregar imagem" style="margin-left: 25px; margin-top: 20px" width="120px" src="{{asset('img/LogoHey.png')}}">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+        <ul class="navbar-nav mr-auto">
 
-<div class="sidebar">
-    <img src="{{asset('img/grecameno.png')}}" style="display: block ; margin-right: auto ; margin-left: auto ; border-radius: 50% ; margin-top: 10% ; margin-bottom: 5%">
-    <h1 align="center" style="font-weight: bold">Nome usuario</h1>
-    <h1 align="center" style="margin-bottom: 3% ; font-weight: 100;">CARGO</h1>
-    <h1 align="center" style="margin-bottom: 15%">____________________</h1>
-
-
-    <button style=" width: 90% ; height: 6% ;  color: white;  margin-left: 5%; margin-right: 5% ;  margin-bottom: 10% ; background-color: #f15722" type="button" class="btn btn-transparent " >Criar novo</button>
-    <a href="{{route('inicio')}}"><i style="margin-left: 25% ; font-size: 50px"class="material-icons">dashboard</i></a>
-    <a href="##" class="active"><i style="margin-left: 25% ; font-size: 50px" class="material-icons">supervisor_account</i></a>
-    <a href="###"> <i style="margin-left: 25% ; font-size:  50px"class="material-icons">settings</i></a>
-
-</div>
-
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <a href="#" style="color: white" class="px-3">Esqueci minha senha</a>
+            <button type="button" class="btn btn-transparent px-4" data-toggle="modal" style="background-color: transparent ; border-color: white ; color: white; border-radius: 10px; margin-right: 10px" type="submit" >
+                <a href="{{route('login')}}" style="color: white">Login</a>
+            </button>
+        </form>
+    </div>
+</nav>
 
 <div class="container ajustcontainer" style="margin-top: 18%; margin-left: 5%">
 
@@ -40,38 +43,6 @@
     <br>
     <button class="btn" type="button" data-toggle="modal" data-target="#exampleModal" style=" padding: 25px ; background-image: linear-gradient(to right, #f4347b 0%, #ff6456 100%); color: white ; border-radius: 28px">COMECAR AGORA</button>
 </div>
-
-<!-- Modal -->
-<div class="modal fade "  id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered " role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="container" style="align-items: center">
-                    <p class="font-weight-bold" style="font-size: xx-large ; color: #205ce2 ; letter-spacing: 3px ; margin-top: 15% ; ">Login</p>
-                </div>
-                <div class="container">
-
-                    <!-- FORMULARIO DE LOGIN -->
-                    <form>
-                        <div class="form-group">
-                            <input type="text" style="border-radius: 10px" class="form-control form-control-lg" id="usuario" aria-describedby="emailHelp" placeholder="Usuario" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" style="border-radius: 10px" class="form-control form-control-lg" id="senha" placeholder="Senha" required>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Lembrar meu Login</label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top: 15px ; background-color: #205ce2 ; border-radius: 15px ; margin-bottom: 15%">Entrar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
