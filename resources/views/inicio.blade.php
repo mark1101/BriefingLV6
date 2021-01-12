@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Hey Briefing</title>
-    <link rel="icon" type="image/png" href="{{asset('img/logoAba.png')}}">
+    <link rel="icon" type="image/png" href="">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -29,7 +29,7 @@
     </div>
 </nav>
 
-<div class="container ajustcontainer" style="margin-top: 18%; margin-left: 5%">
+<div class="container ajustcontainer" style="margin-top: 13%; margin-left: 5%">
 
     <p class="font-weight-bold" style="font-size: x-large ; color: #ff6456 ; letter-spacing: 5px">plataforna iterativa</p>
     <p class="font-weight-bold" style="font-size: xxx-large ;color: #ff6456 ">Para sua empresa</p>

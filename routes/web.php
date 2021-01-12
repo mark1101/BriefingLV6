@@ -24,16 +24,14 @@ Route::get('home', function () {
 });
 
 Route::group(['prefix' => '/cliente'], function (){
-    Route::get('/cadastro' , 'ClienteController@indexCadastro')->name('indexClienteCadastro');
-    Route::get('/show' , 'ClienteController@indexShow')->name('indexClienteShow');
-    Route::get('/inicio' , 'ClienteController@indexDash')->name('indexClienteDash');
-    Route::get('/info' , 'ClienteController@indexInfo')->name('indexClienteInfo');
+    Route::get('/cadastro' , 'ClienteController@indexCadastro')->name('indexClienteCadastro')->middleware('auth');
+    Route::get('/show' , 'ClienteController@indexShow')->name('indexClienteShow')->middleware('auth');
+    Route::get('/inicio' , 'ClienteController@indexDash')->name('indexClienteDash')->middleware('auth');
+    Route::get('/info' , 'ClienteController@indexInfo')->name('indexClienteInfo')->middleware('auth');
 });
 
 Route::get('/inicio' , function (){
    return view('dashboardUser');
 })->name('inicio');
 
-Route::get('/loginn' , function (){
-    return view('login');
-})->name('logo');
+Route::get('/perfil' , 'UserController@indexPerfil')->name('perfilUser')->middleware('auth');
