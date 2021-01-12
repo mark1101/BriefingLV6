@@ -11,6 +11,7 @@ class PieceTableSeeder extends Seeder
      */
     public function run()
     {
+
         Piece::create([
             'id_category' => '1',
             'name' => 'Capa',
@@ -62,7 +63,7 @@ class PieceTableSeeder extends Seeder
             'name' => 'Encarte duplo 42cm x 30cm',
             'value' => '2'
         ]);
-       
+
         //Mídia Exterior id=3
         Piece::create([
             'id_category' => '3',
