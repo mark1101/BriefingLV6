@@ -17,7 +17,7 @@ class CreatePiecesTable extends Migration
             $table->bigIncrements('id');
             $table->Integer('id_category')->unsigned();
             $table->String('name');
-            $table->Integer('value');
+            $table->Double('value');
             $table->timestamps();
             $table->foreign('id_category')->references('id')->on('categories');
         });
