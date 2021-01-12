@@ -1,6 +1,8 @@
 @extends('layouts.geral')
 
 @section('content')
+    <body style="background-image: url({{asset('img/Background1.png')}})">
+
     <div class="col containerMargin" style="margin-top: 5%">
         <form class="form-inline">
             <div class="form-group col-md-10">
@@ -19,7 +21,7 @@
                 <li class="page-item"><a class="page-link" href="#">Inativos</a></li>
             </ul>
         </nav>
-        <table class="table table-striped" style="margin-top: 2%">
+        <table class="table table-striped" style="margin-top: 2% ; background-color: white ; border-radius: 8px">
             <thead>
             <tr>
                 <th scope="col">Clientes</th>

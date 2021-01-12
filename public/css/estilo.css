@@ -1,4 +1,96 @@
-.redondo{
-
+div {
+    box-sizing: border-box;
 }
 
+#container {
+    position: fixed;
+    padding: 0px;
+    margin: 0px;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+}
+
+#logo1 {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: 96px;
+}
+
+#sideMenu {
+    position: absolute;
+    top: 96px;
+    right: 0px;
+    left: 0px;
+    bottom: 48px;
+    overflow-y: auto;
+}
+
+#logo2 {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: 48px;
+}
+
+#topMenu {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: 48px;
+}
+
+#content {
+    position: absolute;
+    top: 48px;
+    right: 0px;
+    left: 0px;
+    bottom: 48px;
+    overflow-y: auto;
+}
+
+#esquerda, #direita {
+    position: relative;
+    height: 100%;
+}
+
+#footer {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: 48px;
+}
+
+#logo1, #sideMenu, #logo2,
+#topMenu, #content, #footer {
+    border: 1px solid black;
+}
+
+.linha {
+    width: 100%;
+    clear: both;
+}
+
+.celula {
+    float: left;
+}
+
+.celula-2 {
+    width: 16.66%;
+}
+
+.celula-10 {
+    width: 83.33%;
+}
+
+.sombreamento{
+    -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+    -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+    box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+}

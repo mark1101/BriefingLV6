@@ -28,6 +28,7 @@ Route::group(['prefix' => '/cliente'], function (){
     Route::get('/show' , 'ClienteController@indexShow')->name('indexClienteShow')->middleware('auth');
     Route::get('/inicio' , 'ClienteController@indexDash')->name('indexClienteDash')->middleware('auth');
     Route::get('/info' , 'ClienteController@indexInfo')->name('indexClienteInfo')->middleware('auth');
+    Route::get('/creditos' , 'CreditosClienteController@indexCreditos')->name('indexCreditos')->middleware('auth');
 });
 
 Route::get('/inicio' , function (){

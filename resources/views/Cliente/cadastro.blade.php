@@ -1,56 +1,175 @@
 @extends('layouts.geral')
 
 @section('content')
-    <div class="card" style="display: block ; margin-left: auto ; margin-right: auto ; margin-top: 7% ;  background-image: linear-gradient(to bottom, #9476e4, #c4bbdb); border-color: transparent">
+
+    <body style="background-image: url({{asset('img/Background1.png')}})">
+    <div class="card card-2" style="margin-top: 2% ; border-radius: 10px ; margin-right: 10% ; margin-left: 10%">
         <div class="card-body">
-            <p align="center" style="font-size: xx-large ; color: white">Cadastro do Cliente</p>
-            <p align="center" style="font-size: medium ; color: white">Informacoes basicas</p>
-            <form>
-                <div class="form-row">
+            <h2 class="text-center" style="color: #FF5400">Cadastro de Cliente</h2>
+            <h5 class="text-center" style="color: grey ">Informacoes básicas</h5>
+            <form style="margin-left: 7% ; margin-right: 7%" class="form">
+                <div class="form-row" style="margin-top: 4%">
+                    <div class="form-group col-md-6 col align-self-start">
+                        <label class="form-label" for="first">Nome da empresa ou marca</label>
+                        <input id="empresa" name="empresa" class="form-input" type="text" />
+                    </div>
+                    <div class="form-group col-md-6 col align-self-end">
+                        <label class="form-label" for="first">WhatsApp ou Telegram</label>
+                        <input id="whats" name="whats" class="form-input" type="text" />
+                    </div>
                     <div class="form-group col-md-6">
-                        <input  type="text" class="form-control form-control-lg" id="" placeholder="Nome da Empresa ou Marca">
+                        <label class="form-label" for="first">Nome completo do responsável</label>
+                        <input id="nomeCompleto"  name="nomeCompleto" class="form-input" type="text" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label" for="first">Endereco de E-mail</label>
+                        <input id="email" name="email" class="form-input" type="text" />
                     </div>
                     <div class="form-group col-md-4">
-                        <input type="text" class="form-control form-control-lg" id="" placeholder="WhatsApp ou Instagram">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control form-control-lg" id="" placeholder="Nome completo do responsavel">
+                        <label class="form-label" for="first">Telefone empresarial</label>
+                        <input id="telEmpresarial" name="telEmpresarial" class="form-input" type="text" />
                     </div>
                     <div class="form-group col-md-4">
-                        <input type="text" class="form-control form-control-lg" id="" placeholder="Telefone Empresarial">
+                        <label class="form-label" for="first">CNPJ</label>
+                        <input id="cnpj" name="cnpj" class="form-input" type="text" />
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control form-control-lg" id="" placeholder="Endereco de email">
+                    <div class="form-group col-md-12">
+                        <label class="form-label" for="first">Endereco completo</label>
+                        <input id="endCompleto" name="endCompleto" class="form-input" type="text" />
                     </div>
                     <div class="form-group col-md-3">
-                        <input type="text" class="form-control form-control-lg" id="" placeholder="CNPJ">
+                        <label class="form-label" for="first">Pontos</label>
+                        <input id="pontos" name="pontos" class="form-input" type="text" />
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="form-label" for="first">Fundado em </label>
+                        <input id="fundado" name="fundado" class="form-input" type="text" />
+                    </div>
+                    <div class="form-group col-md-3" style="margin-left: 3%">
+                        <h3 style="color: #999">Tipo de trabalho</h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="opcao1" >
+                            <label style="color: #999" class="form-check-label" for="exampleRadios1">
+                               Job
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="opcao2">
+                            <label style="color: #999" class="form-check-label" for="exampleRadios2">
+                                Assessoria On
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" >
+                            <label style="color: #999" class="form-check-label" for="exampleRadios3">
+                                Assessoria Off
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <h3 style="color: #999">Logo da empresa</h3>
+                        <input type="file" class="" style="border-color: transparent" name="documento" id="documento">
+                    </div>
+                    <div class="form-group col-md-3" style="margin-top: 3% ; alignment: right">
+                        <button type="button" class="btn btn-lg" style="color: white ; background-color: #FF5400">Cadastrar</button>
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control form-control-lg" id="inputCity" placeholder="Endereco completo">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <select id="inputEstado" class="form-control form-control-lg">
-                            <option selected>Tipo de trabalho</option>
-                            <option>Job</option>
-                            <option>Acessoria On</option>
-                            <option>Acessoria Off</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control form-control-lg" id="" placeholder="Pontos">
-                    </div>
-                </div>
-
-                <button style="display: block ; margin-right: auto ; margin-left: auto ; background-color: #f15722; color: white" type="submit" class="btn btn-lg">Cadastrar</button>
             </form>
         </div>
-    </div>
+
+        </div>
+    </body>
+
+    <style>
+        .inputFino{
+            border: none;
+            background-color: transparent;
+            color: black;
+            font-weight: 500;
+            font-size: 16px;
+            margin-right: 0px;
+            outline: none;
+            margin: 0;
+            width: 80%;
+            padding: 10px 0;
+            margin-bottom: 32px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .form-group {
+            position: relative;
+
+        & + .form-group {
+              margin-top: 30px;
+          }
+        }
+
+        .form-label {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            color: #999;
+            background-color: #fff;
+            z-index: 10;
+            transition: transform 150ms ease-out, font-size 150ms ease-out;
+        }
+
+        .focused .form-label {
+            transform: translateY(-125%);
+            font-size: .75em;
+        }
+
+        .form-input {
+            position: relative;
+            padding: 10px 0px 5px 0;
+            margin-bottom: 4%;
+            width: 100%;
+            outline: 0;
+            margin-top: 3%;
+            border: 0;
+            box-shadow: 0 1px 0 0 #e5e5e5;
+            transition: box-shadow 150ms ease-out;
+
+        &:focus {
+             box-shadow: 0 2px 0 0 blue;
+         }
+        }
+
+        .form-input.filled {
+            box-shadow: 0 2px 0 0 #FF5400;
+        }
+
+
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+
+    <script>
+        $('input').focus(function(){
+            $(this).parents('.form-group').addClass('focused');
+        });
+
+        $('input').blur(function(){
+            var inputValue = $(this).val();
+            if ( inputValue == "" ) {
+                $(this).removeClass('filled');
+                $(this).parents('.form-group').removeClass('focused');
+            } else {
+                $(this).addClass('filled');
+            }
+        })
+    </script>
+
+
+
+
+
 @endsection
