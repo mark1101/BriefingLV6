@@ -44,7 +44,7 @@
 		-moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.3);
 		box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.3);">
                 <div class="card-body">
-                    <h5 class="card-title" style="color: white">Pontuacao</h5>
+                    <h5 class="card-title" style="color: white">Pontuação</h5>
                     <h2 class="card-text" style="color: white">CADASTRADA</h2>
                     <p style="font-size: 25px ; color: white">190 <sup>pontos</sup></p>
                 </div>
@@ -74,18 +74,18 @@
         </div>
     </div>
 
-    <h3 style="margin-top: 3%">Historico de Creditos</h3>
+    <h3 style="margin-top: 3%">Historico de Créditos</h3>
     <div class="table-responsive-sm" style="margin-top: 1% ; margin-bottom: 5%">
         <table class="table" style="border: 1px solid gray">
             <thead>
             <tr>
-                <th scope="col">MES</th>
+                <th scope="col">Mês</th>
                 <th scope="col">Campanha</th>
                 <th scope="col">ID</th>
                 <th scope="col">Categoria</th>
-                <th scope="col">Peca</th>
+                <th scope="col">Peça</th>
                 <th scope="col">Valor</th>
-                <th scope="col">Observacao</th>
+                <th scope="col">Observação</th>
             </tr>
             </thead>
             <tbody>
@@ -115,7 +115,7 @@
     <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <h2 style="color: #FF5400 ; margin-top: 5% ; font-family: Lucida Console, Courier New, monospace" class="text-center">Adicionar Nova Peca</h2>
+                <h2 style="color: #FF5400 ; margin-top: 5% ; font-family: Lucida Console, Courier New, monospace" class="text-center">Adicionar Nova Peça</h2>
                 <div class="modal-body">
                     <form style="margin-left: 3% ; margin-right: 3%">
                         <div class="form-row">
@@ -129,7 +129,7 @@
                         <div class="form-row">
                             <div class="col-md-12">
                                 <select id="inputState" class="inputFino col-md-12">
-                                    <option>Peca</option>
+                                    <option>Peça</option>
                                     <option>...</option>
                                 </select>
                             </div>

@@ -119,7 +119,7 @@
         z-index: 1;
         top: 0;
         left: 0;
-        background-color: #603fb9;
+        background-color: #fcb300;
         overflow-x: hidden;
         padding-top: 20px;
     }
@@ -128,13 +128,13 @@
         padding: 6px 8px 6px 16px;
         text-decoration: none;
         font-size: 18px;
-        color: #a1a7ad;
+        color: white;
         margin-left: 5px;
         display: block;
     }
 
     .sidenav a:hover {
-        color: #f1f1f1;
+        color: #999;
     }
 
     .main {

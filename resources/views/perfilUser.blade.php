@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <body style="background-image: url({{asset('img/Background1.png')}})">
+
     <div class="card" style="margin-top: 3%">
         <div class="card-header">
             Dados de Login
@@ -10,12 +12,14 @@
             <form>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Nome</label>
-                    <input type="text" class="form-control" id="nome" aria-describedby="emailHelp" placeholder="{{Auth::user()->name}}">
+                    <input type="text" class="form-control" id="nome" aria-describedby="emailHelp"
+                           placeholder="{{Auth::user()->name}}">
 
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="exampleInputPassword1" placeholder="{{Auth::user()->email}}">
+                    <input type="email" class="form-control" id="exampleInputPassword1"
+                           placeholder="{{Auth::user()->email}}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Salvar alterações</button>
@@ -44,11 +48,14 @@
                 <div class="form-group">
                     <label for="cargo">Nível</label>
                     <div class="progress">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="3" aria-valuemin="0" aria-valuemax="10">3</div>
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="3"
+                             aria-valuemin="0" aria-valuemax="10">3
+                        </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+    </body>
 
 @endsection
