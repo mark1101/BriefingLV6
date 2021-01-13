@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <body style="background-image: url({{asset('img/Background1.png')}})">
+    <body style="background-color: #faf4f4">
 
     <div class="card" style="margin-top: 3%">
         <div class="card-header">

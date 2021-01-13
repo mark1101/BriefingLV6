@@ -1,7 +1,7 @@
 @extends('layouts.geral')
 
 @section('content')
-    <body style="background-image: url({{asset('img/Background1.png')}})">
+    <body style="background-color: #faf4f4">
 
     <div class="col containerMargin" style="margin-top: 5%">
         <form class="form-inline">
@@ -25,7 +25,7 @@
             <thead>
             <tr>
                 <th scope="col">Clientes</th>
-                <th scope="col">Servico</th>
+                <th scope="col">Categoria </th>
                 <th scope="col">Ultima modificacao</th>
                 <th></th>
                 <th></th>
@@ -44,11 +44,18 @@
                     <button type="submit" class="btn " style="background-color: #603fb9 ; color: white">Editar</button>
                 </td>
                 <td>
-                    <button type="submit" class="btn " style="background-color: #603fb9 ; color: white">Visualizar
+                    <button type="submit" class="btn " style="background-color: #603fb9 ; color: white"><a class="car" href="{{route('indexClienteInfo')}}">Visualizar</a>
                     </button>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
+
+    <style>
+
+        .car , a:hover{
+            color: white;
+        }
+    </style
 @endsection

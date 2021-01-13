@@ -2,19 +2,20 @@
 
 @section('content')
 
-    <body style="background-image: url({{asset('img/Background1.png')}})">
-    <div class="card card-2" style="margin-top: 2% ; border-radius: 10px ; margin-right: 3% ; margin-left: 3%">
+    <body style="background-color: #faf4f4">
+    <div class="card card-2" style="margin-top: 1% ; border-radius: 10px ; margin-right: 10% ; margin-left: 10% ;-webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+            -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.3);
+            box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.3);">
         <div class="card-body">
-            <h2 class="text-center" style="color: #FF5400">Cadastro de Cliente</h2>
-            <h5 class="text-center" style="color: grey ">Informacoes básicas</h5>
-            <form style="margin-left: 7% ; margin-right: 7%" class="form">
-                <div class="form-row" style="margin-top: 4%">
+            <h3 class="text-center" style="color: #FF5400">Cadastro de Cliente</h3>
+            <form style="margin-left: 3% ; margin-right: 3%" class="form">
+                <div class="form-row" style="margin-top: 2%">
                     <div class="form-group col-md-6 col align-self-start">
                         <label class="form-label" for="first">Nome da empresa ou marca</label>
                         <input id="empresa" name="empresa" class="form-input" type="text"/>
                     </div>
                     <div class="form-group col-md-6 col align-self-end">
-                        <label class="form-label" for="first">WhatsApp ou Telegram</label>
+                        <label class="form-label" for="firs t">WhatsApp ou Telegram</label>
                         <input id="whats" name="whats" class="form-input" type="text"/>
                     </div>
                     <div class="form-group col-md-6">
@@ -46,7 +47,7 @@
                         <input id="fundado" name="fundado" class="form-input" type="text"/>
                     </div>
                     <div class="form-group col-md-3" style="margin-left: 3%">
-                        <h5 style="color: #999">Tipo de trabalho</h5>
+                        <h5 style="color: #999">Tipo de servico</h5>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
                                    value="opcao1">
@@ -145,7 +146,7 @@
         }
 
         .form-input.filled {
-            box-shadow: 0 2px 0 0 #FF5400;
+            box-shadow: 0 2px 0 0 #f67232;
         }
 
 

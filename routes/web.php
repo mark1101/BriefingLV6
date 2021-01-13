@@ -31,6 +31,10 @@ Route::group(['prefix' => '/cliente'], function (){
     Route::get('/creditos' , 'CreditosClienteController@indexCreditos')->name('indexCreditos')->middleware('auth');
 });
 
+Route::group(['prefix' => '/cliente/cadastro-briefing'] , function (){
+    Route::get('/conta-anuncio' , 'BriefingController@indexAnuncio')->name('indexAnuncio')->middleware('auth');
+});
+
 Route::get('/inicio' , function (){
    return view('dashboardUser');
 })->name('inicio');

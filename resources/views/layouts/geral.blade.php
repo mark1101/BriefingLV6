@@ -107,9 +107,14 @@
 
 </div><!-- Main Col END -->
 
+<div class="">
+
+</div>
+
 <style>
     body {
         font-family: "Lato", sans-serif;
+        margin-bottom: 5%;
     }
 
     .sidenav {
@@ -119,7 +124,7 @@
         z-index: 1;
         top: 0;
         left: 0;
-        background-color: #fcb300;
+        background-color: #603fb9;
         overflow-x: hidden;
         padding-top: 20px;
     }
@@ -128,18 +133,25 @@
         padding: 6px 8px 6px 16px;
         text-decoration: none;
         font-size: 18px;
-        color: white;
+        color: #babfbc;
         margin-left: 5px;
         display: block;
     }
 
     .sidenav a:hover {
-        color: #999;
+        color: whitesmoke;
     }
 
     .main {
         margin-left: 240px; /* Same as the width of the sidenav */
         margin-right: 40px;
+    }
+
+    .fixarRodape {
+        bottom: 0;
+        position: fixed;
+        width: 100%;
+        text-align: center;
     }
 
     @media screen and (max-height: 450px) {
@@ -159,7 +171,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-
 
 </body>
 </html>
