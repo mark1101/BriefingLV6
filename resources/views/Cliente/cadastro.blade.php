@@ -70,6 +70,10 @@
                             </label>
                         </div>
                     </div>
+                    <div class="form-group col-md-2">
+                        <h5 style="color: #999">Cor principal</h5>
+                        <input type="color" class="" style="border-color: transparent ; width: 50% ; height: 50%" value="red" name="color" id="color">
+                    </div>
                     <div class="form-group col-md-12">
                         <h5 style="color: #999">Logo da empresa</h5>
                         <input type="file" class="" style="border-color: transparent" name="documento" id="documento">

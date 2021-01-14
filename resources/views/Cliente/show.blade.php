@@ -12,15 +12,29 @@
                     href="{{ route('indexClienteCadastro') }}" style="color: white">Cadastrar Cliente</a></button>
         </form>
 
-        <input class="form-control form-control-lg" type="search" placeholder="Pesquisar cliente" aria-label="Search"
-               style="margin-top: 2%">
-        <nav aria-label="Navegação de página exemplo" style="margin-top: 5%;">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Todos Clientes</a></li>
-                <li class="page-item"><a class="page-link" href="#">Ativos</a></li>
-                <li class="page-item"><a class="page-link" href="#">Inativos</a></li>
-            </ul>
-        </nav>
+
+
+        <form id="filters" name="filters" >
+            @csrf
+            <input class="form-control form-control-lg" type="search" placeholder="Pesquisar cliente" aria-label="Search"
+                   style="margin-top: 2% ; margin-bottom: 3%">
+            <input type="hidden" name="filterValues" id="filterValues">
+
+            <button data-id="jornal" data-checked="false" type="button"
+                    class="filter-btn btn btn-teal espacoBotao">
+                Ativos
+            </button>
+
+            <button data-id="revista" data-checked="false" type="button"
+                    class="filter-btn btn btn-teal espacoBotao">
+                Inativos
+            </button>
+
+            <button type="submit" id="pesquisa" class="btn btn-success espacoBotao">
+                Pesquisar
+            </button>
+        </form>
+
         <table class="table table-striped" style="margin-top: 2% ; background-color: white ; border-radius: 8px">
             <thead>
             <tr>
@@ -59,3 +73,34 @@
         }
     </style
 @endsection
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var selectedFilters = [];
+            $('.filter-btn').on('click', function () {
+
+                //$('#filters').submit();
+
+                var clickedButton = $(this);
+                var checked = !Boolean(clickedButton.data('checked'));
+                clickedButton.data('checked', checked);
+                var dataId = clickedButton.data('id');
+                clickedButton.toggleClass("btn-info");
+                clickedButton.toggleClass("btn-danger");
+                if (!selectedFilters.includes(dataId) && checked) {
+                    selectedFilters.push(dataId);
+                } else {
+                    const index = selectedFilters.indexOf(dataId);
+                    if (index > -1) {
+                        selectedFilters.splice(index, 1);
+                    }
+                }
+                var formattedFilters = selectedFilters.join(",");
+                $('#filterValues').val(formattedFilters);
+
+            });
+        });
+    </script>

@@ -40,3 +40,12 @@ Route::get('/inicio' , function (){
 })->name('inicio');
 
 Route::get('/perfil' , 'UserController@indexPerfil')->name('perfilUser')->middleware('auth');
+
+// ROTAS PARA CHEFIA
+Route::get('/tabela-pontos' ,'PontosController@indexPontos')->name('indexPontos')->middleware('auth');
+Route::get('/tabela-categorias' ,'CategoriaController@indexCategoria')->name('indexCategoria')->middleware('auth');
+Route::post('pesquisapontos' , 'PontosController@buscaPontos')->name('buscaPontos')->middleware('auth');
+Route::post('cadastroCategoria' , 'CategoriaController@create')->name('cadatroCategoria')->middleware('auth');
+Route::post('cadatrapeca' , 'PontosController@create')->name('cadastrapeca')->middleware('auth');
+
+Route::get('/cat-peca/{id}', 'ClienteController@modelPeca')->name('buscaPeca');

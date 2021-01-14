@@ -19,7 +19,7 @@ class CreatePiecesTable extends Migration
             $table->String('name');
             $table->Double('value');
             $table->timestamps();
-            $table->foreign('id_category')->references('id')->on('categories');
+            //$table->foreign('id_category')->references('id')->on('categories');
         });
     }
 
