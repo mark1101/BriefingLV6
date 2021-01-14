@@ -91,10 +91,22 @@
         <span class="material-icons">account_circle</span>
         <span class="menu-collapsed">Meu Perfil</span>
     </a>
+    @if(Auth::user()->funcionario == "Chefia")
+        <a href="#">
+            <span class="material-icons">emoji_people</span>
+            <span class="menu-collapsed">Funcionários</span>
+        </a>
+    @endif
     <a href="{{route('indexClienteShow')}}">
         <span class="material-icons">supervisor_account</span>
         <span class="menu-collapsed">Clientes</span>
     </a>
+    @if(Auth::user()->funcionario == "Chefia")
+        <a href="#">
+            <span class="material-icons">table_chart</span>
+            <span class="menu-collapsed">Pontos</span>
+        </a>
+    @endif
     <a href="#contact">
         <span class="material-icons">cached</span>
         <span class="menu-collapsed">Configuracao</span>

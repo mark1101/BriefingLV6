@@ -1,7 +1,7 @@
 @extends('layouts.geral')
 
 @section('content')
-    <body style="background-color: #faf4f4">
+    <body style="background-color: #f2f2f2">
 
     <div class="col containerMargin" style="margin-top: 5%">
         <form class="form-inline">

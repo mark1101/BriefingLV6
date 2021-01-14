@@ -33,7 +33,9 @@
 
     <body style="background-color: #faf4f4">
 
-        <div class="row" style="margin-top: 5%">
+    <h3><a href="{{route('indexClienteInfo')}}" style="margin-top: 5%">Voltar</a></h3>
+
+        <div class="row" style="margin-top: 3%">
             <div class="col-sm-4">
                 <div class="container">
                     <div class="row">
@@ -80,8 +82,8 @@
         </div>
 
         <h3 style="margin-top: 3%">Historico de Créditos</h3>
-        <div class="table-responsive-sm" style="margin-top: 1% ; margin-bottom: 5%">
-            <table class="table" style="border: 1px solid gray">
+        <div class="table-responsive-sm" style="margin-top: 1% ; margin-bottom: 10%">
+            <table class="table" style="border: 1px solid gray; background-color: white">
                 <thead>
                 <tr>
                     <th scope="col">Mês</th>
@@ -179,10 +181,10 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
-    <script>
+    <!-- <script>
         $(document).ready(function () {
             $("#criar").click();
         })
-    </script>
+    </script> -->
 
 @endsection
