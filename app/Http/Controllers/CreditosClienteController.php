@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,10 @@ class CreditosClienteController extends Controller
 {
     public function indexCreditos()
     {
-        return view('Cliente.creditos');
+        $categorias = Category::all();
+
+        return view('Cliente.creditos' , [
+            'categorias' => $categorias
+        ]);
     }
 }

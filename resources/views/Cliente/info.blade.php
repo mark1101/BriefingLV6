@@ -192,6 +192,7 @@
                         <div class="form-row">
                             <div class="col-md-12">
                                 <select id="categoria" name="categoria" class="inputFino col-md-12">
+                                    <option>Selecione a categoria</option>
                                     @foreach($categorias as $c)
                                         <option value="{{$c->id}}">{{$c->name}}</option>
                                     @endforeach
@@ -201,7 +202,7 @@
                         <div class="form-row">
                             <div class="col-md-12">
                                 <select id="peca" name="peca" class="inputFino col-md-12">
-                                    <option value="">Escolha uma peca</option>
+                                    <option>Selecione a peca</option>
                                 </select>
                             </div>
                         </div>
@@ -210,7 +211,7 @@
                                 <input type="text" class="inputFino" id="inputEmail4" placeholder="ID" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" class="inputFino" id="inputPassword4" placeholder="Valor" required>
+                                <input type="text" class="inputFino" id="valor" name="valor" placeholder="Valor" disabled>
                             </div>
                         </div>
                         <div class="form-group">
@@ -277,9 +278,35 @@
                     success: function (response) {
                         console.log(response);
                         if (response.success === true) { //Se tudo deu certo no controller
+                            $('select[name=peca]').empty();
+                            $.each(response.data, function (item, value) {
+                                $('select[name=peca]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');;
+                            });
+                        } else {
+                            console.log('n deu ');
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('select[name="peca"]').on('change', function () {
+
+                var peca_id = $(this).val(); //Pega o id da categoria
+
+                $.ajax({
+                    url: "{{route('buscaValorPeca',['id' => '_valor_'])}}".replace('_valor_', peca_id),
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        if (response.success === true) {
                             //$('select[name=peca]').empty();
                             $.each(response.data, function (item, value) {
-                                $('select[name=peca]').append('<option value="' + response.data[item]["name"] + '"></option>');
+                                $('#valor').val(response.data[item]["value"]);
                             });
                         } else {
                             console.log('n deu ');

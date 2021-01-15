@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\City;
 use App\Piece;
+use App\State;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
@@ -14,7 +16,20 @@ class ClienteController extends Controller
 
     public function indexCadastro()
     {
-        return view('Cliente.cadastro');
+        $estados = State::all();
+
+        return view('Cliente.cadastro',  [
+            'estados' => $estados
+        ]);
+    }
+    public function puxaCidade($id){
+        $cidades = City::where('id_state', $id)->get();
+
+        $response['success'] = true;
+        $response['data'] = $cidades;
+
+        echo json_encode($response);
+
     }
 
     public function indexShow()
@@ -40,5 +55,20 @@ class ClienteController extends Controller
         $response['data'] = $users;
 
         echo json_encode($response);
+    }
+
+    public function modelValorPeca($id)
+    {
+        $users = Piece::where('id', $id)->get();
+
+        $response['success'] = true;
+        $response['data'] = $users;
+
+        echo json_encode($response);
+    }
+
+    public function create(Request $request)
+    {
+
     }
 }

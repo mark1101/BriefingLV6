@@ -34,6 +34,19 @@
                         <label class="form-label" for="first">CNPJ</label>
                         <input id="cnpj" name="cnpj" class="form-input" type="text"/>
                     </div>
+                    <div class="form-group col-md-6">
+                            <select id="estado" name="estado" class="inputFino col-md-12">
+                                <option>Selecione o Estado</option>
+                                @foreach($estados as $e)
+                                    <option value="{{$e->id}}">{{$e->name}}</option>
+                                @endforeach
+                            </select>
+                    </div>
+                    <div class="form-grou col-md-6">
+                            <select id="cidade" name="cidade" class="inputFino col-md-12">
+                                <option>Selecione a Cidade</option>
+                            </select>
+                    </div>
                     <div class="form-group col-md-12">
                         <label class="form-label" for="first">Endereco completo</label>
                         <input id="endCompleto" name="endCompleto" class="form-input" type="text"/>
@@ -156,9 +169,34 @@
 
     </style>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('select[name="estado"]').on('change', function () {
+
+                var categoria_id = $(this).val(); //Pega o id da categoria
+                //console.log(estado_id);
+
+                $.ajax({
+                    url: "{{route('puxaCidade',['id' => '_valor_'])}}".replace('_valor_', categoria_id),
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        if (response.success === true) {
+                            $('select[name=cidade]').empty();
+                            $.each(response.data, function (item, value) {
+                                $('select[name=cidade]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');;
+                            });
+                        } else {
+                            console.log('n deu ');
+                        }
+                    }
+                })
+            });
+        });
+    </script>
 
     <script>
         $('input').focus(function () {

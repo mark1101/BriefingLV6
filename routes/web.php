@@ -49,3 +49,5 @@ Route::post('cadastroCategoria' , 'CategoriaController@create')->name('cadatroCa
 Route::post('cadatrapeca' , 'PontosController@create')->name('cadastrapeca')->middleware('auth');
 
 Route::get('/cat-peca/{id}', 'ClienteController@modelPeca')->name('buscaPeca');
+Route::get('/buscaValorPeca/{id}', 'ClienteController@modelValorPeca')->name('buscaValorPeca');
+Route::get('/puxaCidade/{id}', 'ClienteController@puxaCidade')->name('puxaCidade');

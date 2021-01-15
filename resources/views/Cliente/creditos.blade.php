@@ -118,49 +118,50 @@
             </table>
         </div>
 
-        <!-- MODAL DE CADASTRO DE PECA -->
-        <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <h2 style="color: #FF5400 ; margin-top: 5% ; font-family: Lucida Console, Courier New, monospace" class="text-center">Adicionar Nova Peça</h2>
-                    <div class="modal-body">
-                        <form style="margin-left: 3% ; margin-right: 3%">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <select id="inputState" class="inputFino col-md-12">
-                                        <option>Categoria</option>
-                                        <option>...</option>
-                                    </select>
-                                </div>
+    <!-- MODAL DE CADASTRO DE PECA -->
+    <div class="modal fade" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <h2 style="color: #FF5400 ; margin-top: 5% ; font-family: Lucida Console, Courier New, monospace" class="text-center">Adicionar Nova Peça</h2>
+                <div class="modal-body">
+                    <form style="margin-left: 3% ; margin-right: 3%">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <select id="categoria" name="categoria" class="inputFino col-md-12">
+                                    <option>Selecione a categoria</option>
+                                    @foreach($categorias as $c)
+                                        <option value="{{$c->id}}">{{$c->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <select id="inputState" class="inputFino col-md-12">
-                                        <option>Peça</option>
-                                        <option>...</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <select id="peca" name="peca" class="inputFino col-md-12">
+                                    <option>Selecione a peca</option>
+                                </select>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <input type="text" class="inputFino" id="inputEmail4" placeholder="ID" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input type="text" class="inputFino" id="inputPassword4" placeholder="Valor" required>
-                                </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="inputFino" id="inputEmail4" placeholder="ID" required>
                             </div>
-                            <div class="form-group">
-                                <input type="text" class="inputFino col-md-12" id="inputAddress2" placeholder="Observacoes">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="inputFino" id="valor" name="valor" placeholder="Valor" disabled>
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-success">Salvar</button>
-                    </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="inputFino col-md-12" id="inputAddress2" placeholder="Observacoes">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success">Salvar</button>
                 </div>
             </div>
         </div>
+    </div>>
     </body>
 
 
@@ -179,12 +180,60 @@
         }
     </style>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-    <!-- <script>
+    <script>
         $(document).ready(function () {
-            $("#criar").click();
-        })
-    </script> -->
+            $('select[name="categoria"]').on('change', function () {
+
+                var categoria_id = $(this).val(); //Pega o id da categoria
+                //console.log(estado_id);
+
+                $.ajax({
+                    url: "{{route('buscaPeca',['id' => '_valor_'])}}".replace('_valor_', categoria_id),
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        if (response.success === true) { //Se tudo deu certo no controller
+                            //$('select[name=peca]').empty();
+                            $.each(response.data, function (item, value) {
+                                $('select[name=peca]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');;
+                            });
+                        } else {
+                            console.log('n deu ');
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('select[name="peca"]').on('change', function () {
+
+                var peca_id = $(this).val(); //Pega o id da categoria
+
+                $.ajax({
+                    url: "{{route('buscaValorPeca',['id' => '_valor_'])}}".replace('_valor_', peca_id),
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        if (response.success === true) {
+                            //$('select[name=peca]').empty();
+                            $.each(response.data, function (item, value) {
+                                $('#valor').val(response.data[item]["value"]);
+                            });
+                        } else {
+                            console.log('n deu ');
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+
 
 @endsection
