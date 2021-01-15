@@ -30,7 +30,10 @@
 
     <body style="background-color: #faf4f4">
 
-        <h3 style="margin-top: 3%">Atividade</h3>
+    <div class="row" style="margin-top: 3%">
+        <h1>Cliente {{$cliente->name}}</h1>
+    </div>
+
         <div class="row" style="margin-top: 1%">
             <div class="col-sm-3 align-self-start">
                 <div class="card" style="border-color: transparent ; background-image: linear-gradient(to right bottom, #6241ba, #a696ce) ; -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
@@ -53,7 +56,7 @@
                     <div class="card-body">
                         <h5 class="card-title" style="color: white">Pontuação</h5>
                         <h2 class="card-text" style="color: white">DISPONÍVEL</h2>
-                        <p style="font-size: 25px ; color: white">190 <sup>pontos</sup></p>
+                        <p style="font-size: 25px ; color: white">{{$cliente->points}} <sup>pontos</sup></p>
                     </div>
                     <div class="card-footer ">
                         <div class="row">
@@ -269,7 +272,6 @@
             $('select[name="categoria"]').on('change', function () {
 
                 var categoria_id = $(this).val(); //Pega o id da categoria
-                //console.log(estado_id);
 
                 $.ajax({
                     url: "{{route('buscaPeca',['id' => '_valor_'])}}".replace('_valor_', categoria_id),
@@ -277,8 +279,8 @@
                     dataType: 'json',
                     success: function (response) {
                         console.log(response);
-                        if (response.success === true) { //Se tudo deu certo no controller
-                            $('select[name=peca]').empty();
+                        if (response.success === true) {
+                            //$('select[name=peca]').empty();
                             $.each(response.data, function (item, value) {
                                 $('select[name=peca]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');;
                             });

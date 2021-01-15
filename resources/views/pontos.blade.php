@@ -4,7 +4,7 @@
 
     <form class="form-inline"  style="margin-top: 3%">
         <div class="form-group col-md-8">
-            <h2>Tabela de Pontos</h2>
+            <h1>Tabela de Pontos</h1>
         </div>
         <button data-toggle="modal" data-target="#exampleModal" style="float:  right  ; background-color: #603fb9 ; color: white ; margin-right: 3px"  type="button" class="btn">Cadastrar Peca</button>
         <button style="background-color: #603fb9 ; color: white" type="button" class="btn"><a
@@ -107,9 +107,71 @@
                     <th scope="row">{{($p->categoria)->name}}</th>
                     <td>{{$p->name}}</td>
                     <td>{{$p->value}}</td>
-                    <td><a href="">edt</a></td>
-                    <td><a href="">del</a></td>
+                    <td>
+                        <button type="submit" class="btn " data-toggle="modal" data-target="#modalUpdate"style="background-color: #603fb9 ; color: white">Editar</button>
+                    </td>
+                    <td>
+                        <button type="submit" name = "delete" id="delete" class="btn" style="background-color: #603fb9 ; color: white" data-toggle="modal" data-target="#modalDelete">Apagar</button>
+                    </td>
                 </tr>
+
+
+                <!-- Modal delete -->
+                <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Apagar</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Deseja mesmo apagar a peca {{$p->name}} ?</h5>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary">Deletar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Update-->
+                <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edicao de Peca</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <form>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 col-form-label">Nome</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputPassword" value="{{$p->name}}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 col-form-label">Valor</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="inputPassword" value="{{$p->value}}">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary">Salvar Alteracoes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endforeach
             </tbody>
         </table>
@@ -187,3 +249,4 @@
     </style>
 
 @endsection
+

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\City;
+use App\Client;
 use App\Piece;
 use App\State;
 use Illuminate\Http\Request;
@@ -34,17 +35,25 @@ class ClienteController extends Controller
 
     public function indexShow()
     {
-        return view('Cliente.show');
+        $clientes = Client::all();
+
+        return view('Cliente.show' , [
+            'clientes' => $clientes
+        ]);
     }
 
-    public function indexInfo()
+    public function indexInfo($name)
     {
         $categorias = Category::all();
+        $cliente = Client::where('name' , $name)->get();
         $peca = Piece::all();
+
+        $data = $cliente[count($cliente) - 1];
 
         return view('Cliente.info', [
             'categorias' => $categorias,
-            'pecas' => $peca
+            'pecas' => $peca,
+            'cliente' => $data
         ]);
     }
 
@@ -69,6 +78,37 @@ class ClienteController extends Controller
 
     public function create(Request $request)
     {
+        $data = $request->all();
+        $servico =  $request->input('check');
+        $data['service'] = $servico;
+        $data['points_hired'] = $data['points'];
 
+        if (Client::create($data)){
+            return redirect()->route('indexClienteShow');
+        }else{
+            dd('erro');
+        }
+    }
+
+    public function mostraAtivos(Request $request){
+        $filters = $request->get('filterValues');
+
+        if ($filters == "ativos"){
+            $clientes = Client::where('active' , 1)->get();
+            return view('Cliente.show' , [
+               'clientes' => $clientes
+            ]);
+        }
+        else if ($filters == "naoativo"){
+            $clientes = Client::where('active' , 2)->get();
+            return view('Cliente.show' , [
+                'clientes' => $clientes
+            ]);
+        }else{
+                $clientes = Client::all();
+                return view('Cliente.show' , [
+                    'clientes' => $clientes
+                ]);
+        }
     }
 }
