@@ -9,7 +9,7 @@
         </div>
         <button data-toggle="modal" data-target="#exampleModal" style="float:  right  ; background-color: #603fb9 ; color: white ; margin-right: 3px" type="button" class="btn">Cadastrar Categoria</button>
         <button style="float:  right  ; background-color: #603fb9 ; color: white" type="button" class="btn"><a
-                href="{{route('indexPontos')}}" style="color: white">Ver Pontos</a></button>
+                href="{{route('indexPontos')}}" style="color: white">Ver Pecas</a></button>
     </form>
 
         <table class="table table-striped" style="margin-top: 3%">

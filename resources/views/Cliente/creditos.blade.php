@@ -33,7 +33,7 @@
 
     <body style="background-color: #faf4f4">
 
-    <h3><a href="{{route('indexClienteInfo')}}" style="margin-top: 5%">Voltar</a></h3>
+    <h3><a href="#" style="margin-top: 5%">Voltar</a></h3>
 
         <div class="row" style="margin-top: 3%">
             <div class="col-sm-4">
@@ -161,7 +161,7 @@
                 </div>
             </div>
         </div>
-    </div>>
+    </div>
     </body>
 
 
@@ -195,7 +195,7 @@
                     dataType: 'json',
                     success: function (response) {
                         console.log(response);
-                        if (response.success === true) { //Se tudo deu certo no controller
+                        if (response.success === true) {
                             //$('select[name=peca]').empty();
                             $.each(response.data, function (item, value) {
                                 $('select[name=peca]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');;

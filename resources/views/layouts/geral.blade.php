@@ -92,7 +92,7 @@
         <span class="menu-collapsed">Meu Perfil</span>
     </a>
     @if(Auth::user()->funcionario == "Chefia")
-        <a href="#">
+        <a href="{{route('indexFuncionario')}}">
             <span class="material-icons">emoji_people</span>
             <span class="menu-collapsed">Funcionários</span>
         </a>

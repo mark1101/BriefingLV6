@@ -27,9 +27,13 @@ Route::group(['prefix' => '/cliente'], function (){
     Route::get('/cadastro' , 'ClienteController@indexCadastro')->name('indexClienteCadastro')->middleware('auth');
     Route::get('/show' , 'ClienteController@indexShow')->name('indexClienteShow')->middleware('auth');
     Route::get('/inicio' , 'ClienteController@indexDash')->name('indexClienteDash')->middleware('auth');
-    Route::get('/info' , 'ClienteController@indexInfo')->name('indexClienteInfo')->middleware('auth');
+    Route::get('/info/{name}' , 'ClienteController@indexInfo')->name('indexClienteInfo')->middleware('auth');
     Route::get('/creditos' , 'CreditosClienteController@indexCreditos')->name('indexCreditos')->middleware('auth');
+    Route::post('cadatraClien' , 'ClienteController@create')->name('createClient')->middleware('auth');
+    Route::post('buscaActive' , 'ClienteController@mostraAtivos')->name('buscaActive')->middleware('auth');
 });
+
+Route::get('/funcionarios', 'FuncionariosController@index')->name('indexFuncionario')->middleware('auth');
 
 Route::group(['prefix' => '/cliente/cadastro-briefing'] , function (){
     Route::get('/conta-anuncio' , 'BriefingController@indexAnuncio')->name('indexAnuncio')->middleware('auth');
