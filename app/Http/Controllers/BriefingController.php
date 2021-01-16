@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class BriefingController extends Controller
 {
-    public function indexAnuncio()
+    public function indexGeral()
     {
-        return view('Briefing.contaAnuncio');
+        return view('Briefing.geral');
     }
 }

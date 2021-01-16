@@ -157,7 +157,7 @@
 
         <h1 style="margin-top: 3%; margin-bottom: 10%">Imagens do Instagram</h1>
 
-        <!-- Modal -->
+        <!-- MODAL OPCAO DE CADASTRO DE BRIEFING -->
         <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="border-radius: 40px">
             <div class="modal-dialog modal-dialog-centered" role="document" >
                 <div class="modal-content">
@@ -167,8 +167,8 @@
                     <div class="modal-body">
                         <div class="container">
                             <div class="row">
-                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('indexAnuncio')}}">Geral</a></button>
-                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('indexAnuncio')}}">Criacao Contas Anúncio</a></button>
+                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('indexGeral')}}">Geral</a></button>
+                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('indexGeral')}}">Criacao Contas Anúncio</a></button>
                                 <button type="button" class="btn btn-danger espacamentoBotao" disabled>Campanha Digital Facebook</button>
                                 <button type="button" class="btn btn-danger espacamentoBotao" disabled>Campanha Digital Google</button>
                                 <button type="button" class="btn btn-danger espacamentoBotao" disabled>Páginas Site</button>
