@@ -112,12 +112,42 @@
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
-                                        <h5 style="color: black"><b>Tela 5</b></h5>
-                                        <textarea type="text" name="differential" placeholder=""></textarea>
-                                    </div>
-                                    <input type="button" name="previous" class="previous action-button-previous"
-                                           value="Anterior"/>
-                                    <input type="button" name="next" class="next action-button" value="Próximo"/>
+                                        <div class="form-row">
+                                            <div class="col-md-2">
+                                                <h5 style="color: black"><b>Sexo</b></h5>
+                                                <select class="form-control">
+                                                    <option>Homem</option>
+                                                    <option>Mulher</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-3 float-right">
+                                                <h5 style="color: black"><b>Formação Educacional</b></h5>
+                                                <select class="form-control">
+                                                    <option>op1</option>
+                                                    <option>op2</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-3 float-right">
+                                                <h5 style="color: black"><b>Classe Social</b></h5>
+                                                <select class="form-control">
+                                                    <option>op1</option>
+                                                    <option>op2</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <h5 style="color: black"><b>Localização</b></h5>
+                                        <input type="text" name="location" placeholder="Ex: 10 - 20">
+                                        <h5 style="color: black"><b>Idade</b></h5>
+                                        <input type="text" name="age" placeholder="Ex: 10 - 20">
+                                        <h5 style="color: black"><b>Poder Aquisitivo</b></h5>
+                                        <input type="text" name="power" placeholder="Ex: 10.000 - 14.000">
+                                        <h5 style="color: black"><b>Hábitos de Consumo</b></h5>
+                                        <textarea type="text" name="habits" placeholder=""></textarea>
+                                        <h5 style="color: black"><b>Resumo / informações Adicionais</b></h5>
+                                        <textarea type="text" name="resume" placeholder=""></textarea>
+                                        <input type="button" name="previous" class="previous action-button-previous"
+                                               value="Anterior"/>
+                                        <input type="button" name="next" class="next action-button" value="Próximo"/>
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
@@ -437,7 +467,8 @@
                         if (response.success === true) {
                             $('select[name=city]').empty();
                             $.each(response.data, function (item, value) {
-                                $('select[name=city]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');;
+                                $('select[name=city]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');
+                                ;
                             });
                         } else {
                             console.log('n deu ');
