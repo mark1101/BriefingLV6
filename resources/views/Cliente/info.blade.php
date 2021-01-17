@@ -167,8 +167,8 @@
                     <div class="modal-body">
                         <div class="container">
                             <div class="row">
-                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('indexGeral' , ['name' => $cliente->name])}}">Geral</a></button>
-                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('indexGeral' , ['name' => $cliente->name])}}">Criacao Contas Anúncio</a></button>
+                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('indexContaAnuncio' , ['name' => $cliente->name])}}">Geral</a></button>
+                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="##">Criacao Contas Anúncio</a></button>
                                 <button type="button" class="btn btn-danger espacamentoBotao" disabled>Campanha Digital Facebook</button>
                                 <button type="button" class="btn btn-danger espacamentoBotao" disabled>Campanha Digital Google</button>
                                 <button type="button" class="btn btn-danger espacamentoBotao" disabled>Páginas Site</button>

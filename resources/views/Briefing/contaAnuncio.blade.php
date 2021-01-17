@@ -11,7 +11,7 @@
                     <h2><strong>HEY! Aqui vai o Brief</strong></h2>
                     <div class="row">
                         <div class="col-md-12 mx-0">
-                            <form id="msform" action="{{route('cadastroGeral' , ['id' => $cliente->id])}}" method="post">
+                            <form id="msform" action="{{route('cadastroContaAnuncio' , ['id' => $cliente->id])}}" method="post">
                                 @csrf
                                 <!-- progressbar -->
                                 <ul id="progressbar">

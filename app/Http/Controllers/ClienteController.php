@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Bgeral;
+use App\Banuncio;
 use App\Category;
 use App\City;
 use App\Client;
@@ -51,7 +51,7 @@ class ClienteController extends Controller
         $cliente = Client::where('name' , $name)->get();
         $data = $cliente[count($cliente) - 1];
 
-        $geral = Bgeral::where('id_client', $data->id)->get(); // quantidade de briefings cadastrados
+        $geral = Banuncio::where('id_client', $data->id)->get(); // quantidade de briefings cadastrados
         $total = count($geral);
 
 
