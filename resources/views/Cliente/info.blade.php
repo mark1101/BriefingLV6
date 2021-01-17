@@ -79,7 +79,7 @@
                     <div class="card-body">
                         <h5 class="card-title" style="color: white">Briefing</h5>
                         <h2 class="card-text" style="color: white">CADASTRADOS</h2>
-                        <p style="font-size: 25px ; color: white" >10 <sup>briefings</sup></p>
+                        <p style="font-size: 25px ; color: white" >{{$briefings}} <sup>briefings</sup></p>
                     </div>
                     <div class="card-footer ">
                             <div class="row">
@@ -167,8 +167,8 @@
                     <div class="modal-body">
                         <div class="container">
                             <div class="row">
-                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('indexGeral')}}">Geral</a></button>
-                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('indexGeral')}}">Criacao Contas Anúncio</a></button>
+                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('indexGeral' , ['name' => $cliente->name])}}">Geral</a></button>
+                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('indexGeral' , ['name' => $cliente->name])}}">Criacao Contas Anúncio</a></button>
                                 <button type="button" class="btn btn-danger espacamentoBotao" disabled>Campanha Digital Facebook</button>
                                 <button type="button" class="btn btn-danger espacamentoBotao" disabled>Campanha Digital Google</button>
                                 <button type="button" class="btn btn-danger espacamentoBotao" disabled>Páginas Site</button>

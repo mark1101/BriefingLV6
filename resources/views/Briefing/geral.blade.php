@@ -11,7 +11,8 @@
                     <h2><strong>HEY! Aqui vai o Brief</strong></h2>
                     <div class="row">
                         <div class="col-md-12 mx-0">
-                            <form id="msform">
+                            <form id="msform" action="{{route('cadastroGeral' , ['id' => $cliente->id])}}" method="post">
+                                @csrf
                                 <!-- progressbar -->
                                 <ul id="progressbar">
                                     <li class="active" id="primeira"><strong></strong></li>
@@ -23,33 +24,31 @@
                                 </ul> <!-- fieldsets -->
                                 <fieldset>
                                     <div class="form-card">
+                                        <h2 class="fs-title">Cliente</h2>
+                                        <input type="text" class="" value="{{$cliente->name}}" disabled/>
                                         <h2 class="fs-title">Resumo</h2>
-                                        <textarea type="text" name="resumo"
+                                        <textarea type="text" name="resume"
                                                   placeholder="Escrever de forma breve, oque se trata o Briefing"></textarea>
                                         <h2 class="fs-title">Oque precisa ser feito</h2>
-                                        <textarea type="text" name="oquePrecisa"
+                                        <textarea type="text" name="to_do"
                                                   placeholder="EX: Criacao de contas de anúncio / Facebook e Google "></textarea>
                                     </div>
                                     <input type="button" name="next" class="next action-button" value="Próximo"/>
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
-                                        <!-- <h2 class="fs-title">Informações de Contas</h2>
-                                         <p align="center">Login e senha das plataformas pessoal para anúncio</p>
-                                         <p align="center">(IMPORTANTE: Não tem como anunciar se a pessoa não passar o
-                                             Facebook com o login e a senha para criar a conta )</p> -->
                                         <br>
                                         <h5 style="color: black"><b>Instagram</b></h5>
-                                        <input type="text" name="loginInsta" placeholder="Login"/>
-                                        <input type="text" name="senhaInsta" placeholder="Senha"/>
+                                        <input type="text" name="insta_login" placeholder="Login"/>
+                                        <input type="text" name="insta_pass" placeholder="Senha"/>
                                         <br>
                                         <h5 style="color: black"><b>Facebook</b></h5>
-                                        <input type="text" name="loginFace" placeholder="Login"/>
-                                        <input type="text" name="senhaFace" placeholder="Senha"/>
+                                        <input type="text" name="face_login" placeholder="Login"/>
+                                        <input type="text" name="face_pass" placeholder="Senha"/>
                                         <br>
                                         <h5 style="color: black"><b>Google</b></h5>
-                                        <input type="text" name="loginGoogle" placeholder="Login"/>
-                                        <input type="text" name="senhaGoogle" placeholder="Senha"/>
+                                        <input type="text" name="google_login" placeholder="Login"/>
+                                        <input type="text" name="google_pass" placeholder="Senha"/>
                                     </div>
                                     <input type="button" name="previous" class="previous action-button-previous"
                                            value="Anterior"/>
@@ -60,7 +59,7 @@
                                         <h2 class="fs-title">Upload de RG</h2>
                                         <h4>RG do responsável pelo perfil, frente e verso</h4>
                                         <div class="row">
-                                            <input type="file" style="margin-top: 5%" name="rg" id="rg">
+                                            <input type="file" style="margin-top: 5%" name="rg_responsible" id="rg">
                                         </div>
                                     </div>
                                     <input type="button" name="previous" class="previous action-button-previous"
@@ -79,16 +78,16 @@
                                         <input type="text" name="cnpj" placeholder=""/>
                                         <br>
                                         <h5 style="color: black"><b>Razão Social</b></h5>
-                                        <input type="text" name="razao" placeholder=""/>
+                                        <input type="text" name="social_reason" placeholder=""/>
                                         <br>
                                         <h5 style="color: black"><b>Endereço</b></h5>
-                                        <input type="text" name="endereco" placeholder=""/>
+                                        <input type="text" name="address" placeholder=""/>
                                         <h5 style="color: black"><b>Telefone</b></h5>
                                         <input type="text" name="tel" placeholder=""/>
                                         <h5 style="color: black"><b>Email Comercial</b></h5>
                                         <input type="text" name="email" placeholder=""/>
                                         <h5 style="color: black"><b>Senha Email</b></h5>
-                                        <input type="text" name="senhaEmail"
+                                        <input type="text" name="email_pass"
                                                placeholder="Não obrigatório, somente se o cliente quiser"/>
                                     </div>
                                     <input type="button" name="previous" class="previous action-button-previous"
@@ -108,11 +107,11 @@
                                         <br>
                                         <br>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="cartao de credito">
+                                            <input class="form-check-input" type="checkbox" id="" name="payment_preference" value="cartao de credito">
                                             <label class="form-check-label" for="inlineCheckbox2">Cartão de Crédito</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="cartao de credito">
+                                            <input class="form-check-input" type="checkbox" id="" name="payment_preference" value="cartao de credito">
                                             <label class="form-check-label" for="inlineCheckbox2">Cartão de Crédito</label>
                                         </div>
                                     </div>

@@ -36,7 +36,8 @@ Route::group(['prefix' => '/cliente'], function (){
 Route::get('/funcionarios', 'FuncionariosController@index')->name('indexFuncionario')->middleware('auth');
 
 Route::group(['prefix' => '/cliente/cadastro-briefing'] , function (){
-    Route::get('/geral' , 'BriefingController@indexGeral')->name('indexGeral')->middleware('auth');
+    Route::get('/geral/{name}' , 'BriefingController@indexGeral')->name('indexGeral')->middleware('auth');
+    Route::post('cadastrarGeral/{id}' , 'BriefingController@createBgeral')->name('cadastroGeral')->middleware('auth');
 });
 
 Route::get('/inicio' , function (){
