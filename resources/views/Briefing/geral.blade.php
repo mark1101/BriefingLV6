@@ -1,19 +1,19 @@
 @extends('layouts.geral')
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" >
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
 
 @section('content')
     <div class="container-fluid" id="grad1">
         <div class="row justify-content-center mt-0">
             <div class="col-11 col-sm-11 col-md-11 col-lg-11 text-center p-0 mt-3 mb-2">
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-                    <h2><strong>Cadastro de Briefing Conta Anúncio</strong></h2>
+                    <h2><strong>Cadastro de Briefing Geral!</strong></h2>
                     <div class="row">
                         <div class="col-md-12 mx-0">
-                            <form id="msform" action="{{route('cadastroContaAnuncio' , ['id' => $cliente->id])}}" method="post">
-                                @csrf
-                                <!-- progressbar -->
+                            <form id="msform" action="" method="post">
+                            @csrf
+                            <!-- progressbar -->
                                 <ul id="progressbar">
                                     <li class="active" id="primeira"><strong></strong></li>
                                     <li id="segunda"><strong></strong></li>
@@ -21,34 +21,47 @@
                                     <li id="quarta"><strong></strong></li>
                                     <li id="quinta"><strong></strong></li>
                                     <li id="sexta"><strong></strong></li>
+                                    <li id="setima"><strong></strong></li>
                                 </ul> <!-- fieldsets -->
-                                <fieldset>
-                                    <div class="form-card">
-                                        <h2 class="fs-title">Cliente</h2>
-                                        <input type="text" class="" value="{{$cliente->name}}" disabled/>
-                                        <h2 class="fs-title">Resumo</h2>
-                                        <textarea type="text" name="resume"
-                                                  placeholder="Escrever de forma breve, oque se trata o Briefing"></textarea>
-                                        <h2 class="fs-title">Oque precisa ser feito</h2>
-                                        <textarea type="text" name="to_do"
-                                                  placeholder="EX: Criacao de contas de anúncio / Facebook e Google "></textarea>
-                                    </div>
-                                    <input type="button" name="next" class="next action-button" value="Próximo"/>
-                                </fieldset>
                                 <fieldset>
                                     <div class="form-card">
                                         <br>
                                         <h5 style="color: black"><b>Instagram</b></h5>
-                                        <input type="text" name="insta_login" placeholder="Login"/>
-                                        <input type="text" name="insta_pass" placeholder="Senha"/>
+                                        <input type="text" name="instagram" placeholder=""/>
                                         <br>
                                         <h5 style="color: black"><b>Facebook</b></h5>
-                                        <input type="text" name="face_login" placeholder="Login"/>
-                                        <input type="text" name="face_pass" placeholder="Senha"/>
+                                        <input type="text" name="facebook" placeholder=""/>
                                         <br>
-                                        <h5 style="color: black"><b>Google</b></h5>
-                                        <input type="text" name="google_login" placeholder="Login"/>
-                                        <input type="text" name="google_pass" placeholder="Senha"/>
+                                        <h5 style="color: black"><b>Site</b></h5>
+                                        <input type="text" name="site" placeholder=""/>
+                                        <h5 style="color: black"><b>Youtube</b></h5>
+                                        <input type="text" name="youtube" placeholder=""/>
+                                        <h5 style="color: black"><b>Blog</b></h5>
+                                        <input type="text" name="blog" placeholder=""/>
+                                        <h5 style="color: black"><b>TikTok</b></h5>
+                                        <input type="text" name="tiktok" placeholder=""/>
+                                    </div>
+                                    <input type="button" name="next" class="next action-button" value="Próximo"/>
+                                </fieldset>
+                                <fieldset>
+                                    <div class="form-card">
+                                        <br>
+                                        <h5 style="color: black"><b>Estado</b></h5>
+                                        <select class="form-control" name="state">
+                                            @foreach($estado as $e)
+                                                <option value="{{$e->id}}">{{$e->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        <br>
+                                        <h5 style="color: black"><b>Cidade</b></h5>
+                                        <select class="form-control" name="city">
+                                            <option>Selecione a cidade</option>
+                                        </select>
+                                        <br>
+                                        <h5 style="color: black"><b>Rua</b></h5>
+                                        <input type="text" name="street" placeholder=""/>
+                                        <h5 style="color: black"><b>Complemento</b></h5>
+                                        <input type="text" name="complement" placeholder=""/>
                                     </div>
                                     <input type="button" name="previous" class="previous action-button-previous"
                                            value="Anterior"/>
@@ -56,39 +69,19 @@
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
-                                        <h2 class="fs-title">Upload de RG</h2>
-                                        <h4>RG do responsável pelo perfil, frente e verso</h4>
-                                        <div class="row">
-                                            <input type="file" style="margin-top: 5%" name="rg_responsible" id="rg">
-                                        </div>
-                                    </div>
-                                    <input type="button" name="previous" class="previous action-button-previous"
-                                           value="Anterior"/>
-                                    <input type="button" name="next" class="next action-button" value="Próximo"/>
-                                </fieldset>
-                                <fieldset>
-                                    <div class="form-card">
-                                        <h2 class="fs-title">Dados Essenciais</h2>
-                                        <p>É de suma importância que todos os dados digitados estejam corretos!</p>
-                                        <!-- <p align="center">Login e senha das plataformas pessoal para anúncio</p>
-                                        <p align="center">(IMPORTANTE: Não tem como anunciar se a pessoa não passar o
-                                            Facebook com o login e a senha para criar a conta )</p> -->
-                                        <br>
-                                        <h5 style="color: black"><b>CNPJ</b></h5>
+                                        <h5 style="color: black"><b>Origem do nome</b></h5>
                                         <input type="text" name="cnpj" placeholder=""/>
                                         <br>
-                                        <h5 style="color: black"><b>Razão Social</b></h5>
-                                        <input type="text" name="social_reason" placeholder=""/>
+                                        <h5 style="color: black"><b>Palavras-chave (Hashtags mais usadas da área)</b>
+                                        </h5>
+                                        <textarea type="text" name="source" placeholder=""></textarea>
                                         <br>
-                                        <h5 style="color: black"><b>Endereço</b></h5>
-                                        <input type="text" name="address" placeholder=""/>
-                                        <h5 style="color: black"><b>Telefone</b></h5>
-                                        <input type="text" name="tel" placeholder=""/>
-                                        <h5 style="color: black"><b>Email Comercial</b></h5>
-                                        <input type="text" name="email" placeholder=""/>
-                                        <h5 style="color: black"><b>Senha Email</b></h5>
-                                        <input type="text" name="email_pass"
-                                               placeholder="Não obrigatório, somente se o cliente quiser"/>
+                                        <h5 style="color: black"><b>Oque queremos passar ao público através do visual?
+                                                (Estilo, paleta de cores, fontes)</b></h5>
+                                        <textarea type="text" name="transparency" placeholder=""></textarea>
+                                        <br>
+                                        <h5 style="color: black"><b>Missão - Propósito</b></h5>
+                                        <textarea type="text" name="mission" placeholder=""></textarea>
                                     </div>
                                     <input type="button" name="previous" class="previous action-button-previous"
                                            value="Anterior"/>
@@ -96,24 +89,22 @@
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
-                                        <h2 class="fs-title">Preferência de Pagamento</h2>
-                                        <p align="justify">IMPORTANTE! Boleto leva até 3 dias para compensar. Cartão de
-                                            crédito são pagamento automáticos,
-                                            o facebook vai cobrando em média por dia de acordo com o gasto. No Google
-                                            existe a opção de pagamento
-                                            por boleto e cartão. No caso do cartão os pagamentos podem ser automáticos.
-                                            Conforme o Google vai gastando,
-                                            ou adicionar um valor de saldo que é cobrado inteiro no cartão</p>
+                                        <h5 style="color: black"><b>Serviços/Produtos: (Qual a sua empresa oferecerá?
+                                                Que soluções eles trazem aos clientes?)</b></h5>
+                                        <textarea type="text" name="services" placeholder=""></textarea>
                                         <br>
+                                        <h5 style="color: black"><b>Desafios: Quais são os principais desafios da
+                                                empresa?</b></h5>
+                                        <textarea type="text" name="challenge" placeholder=""></textarea>
                                         <br>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="" name="payment_preference" value="cartao de credito">
-                                            <label class="form-check-label" for="inlineCheckbox2">Cartão de Crédito</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="" name="payment_preference" value="cartao de credito">
-                                            <label class="form-check-label" for="inlineCheckbox2">Cartão de Crédito</label>
-                                        </div>
+                                        <h5 style="color: black"><b>Objetivos: Quais são os objetivos da empresa? Oque
+                                                se quer alcaçar? Quais as metas?</b></h5>
+                                        <textarea type="text" name="objetive" placeholder=""></textarea>
+                                        <br>
+                                        <h5 style="color: black"><b>Qual o principal diferencial/atributo/proposta de
+                                                valor que deverá ser comunicado. O que diferencia esse produto/serviço
+                                                da concorrência. Oque faz ser único?</b></h5>
+                                        <textarea type="text" name="differential" placeholder=""></textarea>
                                     </div>
                                     <input type="button" name="previous" class="previous action-button-previous"
                                            value="Anterior"/>
@@ -121,7 +112,32 @@
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
-                                        <h2 class="fs-title text-center">Successo, todos os dados foram registrados !</h2> <br><br>
+                                        <h5 style="color: black"><b>Tela 5</b></h5>
+                                        <textarea type="text" name="differential" placeholder=""></textarea>
+                                    </div>
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                           value="Anterior"/>
+                                    <input type="button" name="next" class="next action-button" value="Próximo"/>
+                                </fieldset>
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h5 style="color: black"><b>Concorrência: Listas os principais concorrentes e
+                                                uma breve descrição de que tipo de ameaça esses concorrêntes
+                                                apresentam.</b></h5>
+                                        <textarea type="text" name="competition" placeholder=""></textarea>
+                                        <br>
+                                        <h5 style="color: black"><b>Descreva de forma detalhada uma persona desta
+                                                empresa</b></h5>
+                                        <textarea type="text" name="persona" placeholder=""></textarea>
+                                    </div>
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                           value="Anterior"/>
+                                    <input type="button" name="next" class="next action-button" value="Próximo"/>
+                                </fieldset>
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h2 class="fs-title text-center">Successo, todos os dados foram registrados
+                                            !</h2> <br><br>
                                         <div class="row justify-content-center">
                                             <div class="col-3"><img
                                                     src="https://img.icons8.com/color/96/000000/ok--v2.png"
@@ -132,6 +148,8 @@
                                             <button type="submit" class="btn btn-success">Enviar os Dados</button>
                                         </div>
                                     </div>
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                           value="Anterior"/>
                                 </fieldset>
                             </form>
                         </div>
@@ -220,6 +238,7 @@
 
             outline-width: 0
         }
+
         /* Acima isso aqui :  border-bottom: 2px solid skyblue; */
 
         #msform .action-button {
@@ -297,7 +316,7 @@
         #progressbar li {
             list-style-type: none;
             font-size: 12px;
-            width: 15%;
+            width: 13%;
             float: left;
             position: relative
         }
@@ -306,25 +325,35 @@
             font-family: FontAwesome;
             content: "1"
         }
+
         #progressbar #segunda:before {
             font-family: FontAwesome;
             content: "2"
         }
+
         #progressbar #terceira:before {
             font-family: FontAwesome;
             content: "3"
         }
+
         #progressbar #quarta:before {
-              font-family: FontAwesome;
-              content: "4"
+            font-family: FontAwesome;
+            content: "4"
         }
+
         #progressbar #quinta:before {
             font-family: FontAwesome;
             content: "5"
         }
+
         #progressbar #sexta:before {
             font-family: FontAwesome;
             content: "6"
+        }
+
+        #progressbar #setima:before {
+            font-family: FontAwesome;
+            content: "7"
         }
 
         #progressbar li:before {
@@ -390,6 +419,34 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('select[name="state"]').on('change', function () {
+
+                var categoria_id = $(this).val(); //Pega o id da categoria
+                //console.log(estado_id);
+
+                $.ajax({
+                    url: "{{route('puxaCidade',['id' => '_valor_'])}}".replace('_valor_', categoria_id),
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                        if (response.success === true) {
+                            $('select[name=city]').empty();
+                            $.each(response.data, function (item, value) {
+                                $('select[name=city]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');;
+                            });
+                        } else {
+                            console.log('n deu ');
+                        }
+                    }
+                })
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function () {

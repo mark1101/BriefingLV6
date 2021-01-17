@@ -6,6 +6,7 @@ use App\Banuncio;
 use App\Category;
 use App\Client;
 use App\Piece;
+use App\State;
 use Illuminate\Http\Request;
 
 class BriefingController extends Controller
@@ -25,9 +26,6 @@ class BriefingController extends Controller
         $clientes = Client::where('id' , $id)->get();
         $dataa = $clientes[count($clientes) - 1];
 
-        $categorias = Category::all();
-        $peca = Piece::all();
-
         $data = $request->all();
         $data['id_client'] = $id;
 
@@ -35,5 +33,18 @@ class BriefingController extends Controller
             return redirect()->route('indexClienteInfo' , ['name' => $dataa->name]);
         }
 
+    }
+
+    public function indexGeral($name)
+    {
+        $estados = State::all();
+
+        $cliente = Client::where('name' , $name)->get();
+        $data = $cliente[count($cliente) - 1];
+
+        return view('Briefing.geral', [
+            'cliente' => $data,
+            'estado' => $estados
+        ]);
     }
 }

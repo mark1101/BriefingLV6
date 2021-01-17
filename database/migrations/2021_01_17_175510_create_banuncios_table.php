@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBgeralsTable extends Migration
+class CreateBanunciosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBgeralsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bgerals', function (Blueprint $table) {
+        Schema::create('banuncios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('id_client');
             $table->string('resume');

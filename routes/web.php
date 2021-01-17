@@ -37,6 +37,7 @@ Route::get('/funcionarios', 'FuncionariosController@index')->name('indexFunciona
 
 Route::group(['prefix' => '/cliente/cadastro-briefing'] , function (){
     Route::get('/conta_anuncio/{name}' , 'BriefingController@indexContaAnuncio')->name('indexContaAnuncio')->middleware('auth');
+    Route::get('/geral/{name}' , 'BriefingController@indexGeral')->name('indexGeral')->middleware('auth');
     Route::post('cadastrarcontaanuncio/{id}' , 'BriefingController@createBanuncio')->name('cadastroContaAnuncio')->middleware('auth');
 });
 
