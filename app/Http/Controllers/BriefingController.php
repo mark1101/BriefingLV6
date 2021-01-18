@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Banuncio;
+use App\Bgeral;
 use App\Category;
 use App\Client;
 use App\Piece;
@@ -46,5 +47,20 @@ class BriefingController extends Controller
             'cliente' => $data,
             'estado' => $estados
         ]);
+    }
+
+    public function createBgeral(Request $request, $id)
+    {
+        $clientes = Client::where('id', $id)->get();
+        $dataa = $clientes[count($clientes) - 1];
+
+
+        $data = $request->all();
+
+        $data['client_id'] = $id;
+
+        if (Bgeral::create($data)){
+            return redirect()->route('indexClienteInfo' , ['name' => $dataa->name]);
+        }
     }
 }

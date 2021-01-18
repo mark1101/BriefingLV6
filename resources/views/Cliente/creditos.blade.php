@@ -1,31 +1,38 @@
 @extends('layouts.geral')
 
 
-
-
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
-    google.charts.load('current', {'packages':['corechart']});
+    google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['Semana', 'Pontos', ],
-            ['Semana 1',  15],
-            ['Semana 2',  20],
-            ['Semana 3',  5],
-            ['Semana 4',  7]
+            ['Meses', 'Movimentos'],
+            ["Janeiro", {{$janeiro}}],
+            ["Fevereiro", {{$fevereiro}}],
+            ["Março", {{$marco}}],
+            ["Abril", {{$abril}}],
+            ["Maio", {{$maio}}],
+            ["Junho", {{$junho}}],
+            ["Julho", {{$julho}}],
+            ["Agosto", {{$agosto}}],
+            ["Setembro", {{$setembro}}],
+            ["Outubro", {{$outubro}}],
+            ["Novembro", {{$novembro}}],
+            ["Dezembro", {{$dezembro}}],
         ]);
 
         var options = {
-            title: 'Pontuacao mensal',
-            curveType: 'function',
-            legend: { position: 'bottom' }
+            chart: {
+                title: 'Movimento Mensal',
+                subtitle: 'Cliente cadastrado em {{$cliente->created_at->format("d-m-Y")}}',
+            }
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
 
-        chart.draw(data, options);
+        chart.draw(data, google.charts.Bar.convertOptions(options));
     }
 </script>
 
@@ -35,7 +42,7 @@
 
     <h3><a href="#" style="margin-top: 5%">Voltar</a></h3>
 
-        <div class="row" style="margin-top: 3%">
+        <div class="row"  style="margin-top: 3% ; margin-left: 12%">
             <div class="col-sm-4">
                 <div class="container">
                     <div class="row">
@@ -53,7 +60,7 @@
                     <div class="card-body">
                         <h5 class="card-title" style="color: white">Pontuação</h5>
                         <h2 class="card-text" style="color: white">CADASTRADA</h2>
-                        <p style="font-size: 25px ; color: white">190 <sup>pontos</sup></p>
+                        <p style="font-size: 25px ; color: white">{{$cliente->points_hired}} <sup>pontos</sup></p>
                     </div>
                 </div>
             </div>
@@ -64,7 +71,7 @@
                     <div class="card-body">
                         <h5 class="card-title" style="color: white">Saldo</h5>
                         <h2 class="card-text" style="color: white">DISPONÍVEL</h2>
-                        <p style="font-size: 25px ; color: white" >190 <sup>pontos</sup></p>
+                        <p style="font-size: 25px ; color: white" >{{$cliente->points}} <sup>pontos</sup></p>
                     </div>
                 </div>
             </div>
@@ -77,7 +84,7 @@
                 <h5 class="card-title">Movimentos</h5>
             </div>
             <div class="card-body">
-                <div id="curve_chart" style="width: 100%; height: 250px"></div>
+                <div id="columnchart_material" style="width: 100%; height: 250px"></div>
             </div>
         </div>
 
@@ -87,33 +94,22 @@
                 <thead>
                 <tr>
                     <th scope="col">Mês</th>
-                    <th scope="col">Campanha</th>
                     <th scope="col">ID</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Peça</th>
+                    <th scope="col">Peca</th>
                     <th scope="col">Valor</th>
                     <th scope="col">Observação</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                    <td>@twitter</td>
-                </tr>
+                @foreach($historico as $h)
+                    <tr>
+                        <th>{{$h->created_at->format("m")}}</th>
+                        <td>{{$h->id_service}}</td>
+                        <td>{{($h->peca)->name}}</td>
+                        <td>{{$h->value}}</td>
+                        <td>{{$h->observation}}</td>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
@@ -124,7 +120,8 @@
             <div class="modal-content">
                 <h2 style="color: #FF5400 ; margin-top: 5% ; font-family: Lucida Console, Courier New, monospace" class="text-center">Adicionar Nova Peça</h2>
                 <div class="modal-body">
-                    <form style="margin-left: 3% ; margin-right: 3%">
+                    <form style="margin-left: 3% ; margin-right: 3%" method="post" action="{{route('subCredit' , ['id' => $cliente->id])}}">
+                        @csrf
                         <div class="form-row">
                             <div class="col-md-12">
                                 <select id="categoria" name="categoria" class="inputFino col-md-12">
@@ -137,28 +134,27 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-12">
-                                <select id="peca" name="peca" class="inputFino col-md-12">
+                                <select id="piece_id" name="piece_id" class="inputFino col-md-12">
                                     <option>Selecione a peca</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="inputFino" id="inputEmail4" placeholder="ID" required>
+                                <input type="text" name="id_service" class="inputFino" id="inputEmail4" placeholder="ID" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <input type="text" class="inputFino" id="valor" name="valor" placeholder="Valor" disabled>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="inputFino col-md-12" id="inputAddress2" placeholder="Observacoes">
+                            <input type="text" class="inputFino col-md-12" id="observation" name="observation" placeholder="Observacoes">
                         </div>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success float-right">Salvar</button>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success">Salvar</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -196,9 +192,9 @@
                     success: function (response) {
                         console.log(response);
                         if (response.success === true) {
-                            //$('select[name=peca]').empty();
+                            $('select[name=piece_id]').empty();
                             $.each(response.data, function (item, value) {
-                                $('select[name=peca]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');;
+                                $('select[name=piece_id]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');;
                             });
                         } else {
                             console.log('n deu ');
@@ -211,7 +207,7 @@
 
     <script>
         $(document).ready(function () {
-            $('select[name="peca"]').on('change', function () {
+            $('select[name="piece_id"]').on('change', function () {
 
                 var peca_id = $(this).val(); //Pega o id da categoria
 
@@ -222,7 +218,6 @@
                     success: function (response) {
                         console.log(response);
                         if (response.success === true) {
-                            //$('select[name=peca]').empty();
                             $.each(response.data, function (item, value) {
                                 $('#valor').val(response.data[item]["value"]);
                             });

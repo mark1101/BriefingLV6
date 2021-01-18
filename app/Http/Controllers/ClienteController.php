@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Banuncio;
+use App\Bgeral;
 use App\Category;
 use App\City;
 use App\Client;
+use App\CreditHistory;
 use App\Piece;
 use App\State;
 use Illuminate\Http\Request;
@@ -51,12 +53,22 @@ class ClienteController extends Controller
         $cliente = Client::where('name' , $name)->get();
         $data = $cliente[count($cliente) - 1];
 
-        $geral = Banuncio::where('id_client', $data->id)->get(); // quantidade de briefings cadastrados
-        $total = count($geral);
+
+        $anuncio = Banuncio::where('id_client', $data['id'])->get();
+        $geral = Bgeral::where('client_id' , $data['id'])->get();
+
+
+
+        $total = count($anuncio) + count($geral);
+
+        $historico = CreditHistory::where('client_id' , $data['id'])->get();
 
 
         return view('Cliente.info', [
+            'temGeral' => count($geral),
+            'temAnuncio' => count($anuncio),
             'categorias' => $categorias,
+            'historico' => $historico,
             'pecas' => $peca,
             'cliente' => $data,
             'briefings' => $total
@@ -94,6 +106,21 @@ class ClienteController extends Controller
         }else{
             dd('erro');
         }
+    }
+
+    public function active($id )
+    {
+
+        $cliente = Client::where('id' , $id)->get();
+        $data = $cliente[count($cliente) - 1];
+
+        if ($data['active'] == 1){
+            Client::where('id' , $id)->update(['active' => 2]);
+        }else if($data['active'] == 2){
+            Client::where('id' , $id)->update(['active' => 1]);
+        }
+
+        return redirect()->route('indexClienteShow');
     }
 
     public function mostraAtivos(Request $request){

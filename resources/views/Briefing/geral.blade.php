@@ -11,7 +11,7 @@
                     <h2><strong>Cadastro de Briefing Geral!</strong></h2>
                     <div class="row">
                         <div class="col-md-12 mx-0">
-                            <form id="msform" action="" method="post">
+                            <form id="msform" action="{{route('cadastroGeral' , ['id' => $cliente->id])}}" method="post">
                             @csrf
                             <!-- progressbar -->
                                 <ul id="progressbar">
@@ -47,14 +47,14 @@
                                     <div class="form-card">
                                         <br>
                                         <h5 style="color: black"><b>Estado</b></h5>
-                                        <select class="form-control" name="state">
+                                        <select class="form-control" name="state_id">
                                             @foreach($estado as $e)
                                                 <option value="{{$e->id}}">{{$e->name}}</option>
                                             @endforeach
                                         </select>
                                         <br>
                                         <h5 style="color: black"><b>Cidade</b></h5>
-                                        <select class="form-control" name="city">
+                                        <select class="form-control" name="city_id">
                                             <option>Selecione a cidade</option>
                                         </select>
                                         <br>
@@ -115,26 +115,27 @@
                                         <div class="form-row">
                                             <div class="col-md-2">
                                                 <h5 style="color: black"><b>Sexo</b></h5>
-                                                <select class="form-control">
+                                                <select class="form-control" name="sex">
                                                     <option>Homem</option>
                                                     <option>Mulher</option>
                                                 </select>
                                             </div>
                                             <div class="col-3 float-right">
                                                 <h5 style="color: black"><b>Formação Educacional</b></h5>
-                                                <select class="form-control">
+                                                <select class="form-control" name="formation">
                                                     <option>op1</option>
                                                     <option>op2</option>
                                                 </select>
                                             </div>
                                             <div class="col-3 float-right">
                                                 <h5 style="color: black"><b>Classe Social</b></h5>
-                                                <select class="form-control">
+                                                <select class="form-control" name="class">
                                                     <option>op1</option>
                                                     <option>op2</option>
                                                 </select>
                                             </div>
                                         </div>
+
                                         <h5 style="color: black"><b>Localização</b></h5>
                                         <input type="text" name="location" placeholder="Ex: 10 - 20">
                                         <h5 style="color: black"><b>Idade</b></h5>
@@ -145,6 +146,7 @@
                                         <textarea type="text" name="habits" placeholder=""></textarea>
                                         <h5 style="color: black"><b>Resumo / informações Adicionais</b></h5>
                                         <textarea type="text" name="resume" placeholder=""></textarea>
+                                    </div>
                                         <input type="button" name="previous" class="previous action-button-previous"
                                                value="Anterior"/>
                                         <input type="button" name="next" class="next action-button" value="Próximo"/>
@@ -453,7 +455,7 @@
 
     <script>
         $(document).ready(function () {
-            $('select[name="state"]').on('change', function () {
+            $('select[name="state_id"]').on('change', function () {
 
                 var categoria_id = $(this).val(); //Pega o id da categoria
                 //console.log(estado_id);
@@ -465,9 +467,9 @@
                     success: function (response) {
                         console.log(response);
                         if (response.success === true) {
-                            $('select[name=city]').empty();
+                            $('select[name=city_id]').empty();
                             $.each(response.data, function (item, value) {
-                                $('select[name=city]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');
+                                $('select[name=city_id]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');
                                 ;
                             });
                         } else {

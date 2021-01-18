@@ -28,7 +28,7 @@ Route::group(['prefix' => '/cliente'], function (){
     Route::get('/show' , 'ClienteController@indexShow')->name('indexClienteShow')->middleware('auth');
     Route::get('/inicio' , 'ClienteController@indexDash')->name('indexClienteDash')->middleware('auth');
     Route::get('/info/{name}' , 'ClienteController@indexInfo')->name('indexClienteInfo')->middleware('auth');
-    Route::get('/creditos' , 'CreditosClienteController@indexCreditos')->name('indexCreditos')->middleware('auth');
+    Route::get('/creditos/{name}' , 'CreditosClienteController@indexCreditos')->name('indexCreditos')->middleware('auth');
     Route::post('cadatraClien' , 'ClienteController@create')->name('createClient')->middleware('auth');
     Route::post('buscaActive' , 'ClienteController@mostraAtivos')->name('buscaActive')->middleware('auth');
 });
@@ -39,6 +39,7 @@ Route::group(['prefix' => '/cliente/cadastro-briefing'] , function (){
     Route::get('/conta_anuncio/{name}' , 'BriefingController@indexContaAnuncio')->name('indexContaAnuncio')->middleware('auth');
     Route::get('/geral/{name}' , 'BriefingController@indexGeral')->name('indexGeral')->middleware('auth');
     Route::post('cadastrarcontaanuncio/{id}' , 'BriefingController@createBanuncio')->name('cadastroContaAnuncio')->middleware('auth');
+    Route::post('cadastrargeral/{id}' , 'BriefingController@createBgeral')->name('cadastroGeral')->middleware('auth');
 });
 
 Route::get('/inicio' , function (){
@@ -57,3 +58,14 @@ Route::post('cadatrapeca' , 'PontosController@create')->name('cadastrapeca')->mi
 Route::get('/cat-peca/{id}', 'ClienteController@modelPeca')->name('buscaPeca');
 Route::get('/buscaValorPeca/{id}', 'ClienteController@modelValorPeca')->name('buscaValorPeca');
 Route::get('/puxaCidade/{id}', 'ClienteController@puxaCidade')->name('puxaCidade');
+
+// ROTA DE CADASTRO DE PECA
+Route::post('cadastroPecaSub/{id}', 'HistoryCreditController@subPontos')->name('subCredit')->middleware('auth');
+
+// FUNCAO DE ATIVA E DESATIVA CLIENTE
+Route::get('ativadesativa/{id}', 'ClienteController@active')->name('active')->middleware('auth');
+
+//VISUALIZACAO DE BRIEFING
+Route::group(['prefix' => '/cliente/visualizacao-briefing'] , function (){
+    Route::get('mostraGeral', 'VeBriefingController@indexGeral')->name('veGeral')->middleware('auth');
+});

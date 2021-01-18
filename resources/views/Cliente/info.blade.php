@@ -7,20 +7,19 @@
 
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['Year', 'Sales', 'Expenses'],
-            ['2013',  1000,      400],
-            ['2014',  1170,      460],
-            ['2015',  660,       1120],
-            ['2016',  1030,      540]
+            ['Data', 'Pontos', ],
+            @foreach($historico as $h)
+             ['.' , {{$h->value}}],
+            @endforeach
         ]);
 
         var options = {
-            title: 'Company Performance',
-            hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-            vAxis: {minValue: 0}
+            curveType: 'function',
+            legend: { position: 'bottom' }
         };
 
-        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
         chart.draw(data, options);
     }
 </script>
@@ -61,7 +60,7 @@
                     <div class="card-footer ">
                         <div class="row">
                             <div class="col align-self-start text-center">
-                                <a class="corLink" href="{{route('indexCreditos')}}">Visualizar</a>
+                                <a class="corLink" href="{{route('indexCreditos' , ['name' => $cliente->name])}}">Visualizar</a>
                             </div>
                             <div class="linha-vertical">
                             </div>
@@ -89,7 +88,7 @@
                                 <div class="linha-vertical">
                                 </div>
                                 <div class="col align-self-end text-center">
-                                    <a class="corLink" href="#">Ver mais</a>
+                                    <a class="corLink" data-toggle="modal" href="#modal2">Ver mais</a>
                                 </div>
                             </div>
                     </div>
@@ -185,6 +184,31 @@
             </div>
         </div>
 
+    <!-- MODAL OPCAO DE VISU BRIEFING -->
+    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="border-radius: 40px">
+        <div class="modal-dialog modal-dialog-centered" role="document" >
+            <div class="modal-content">
+                <div class="text-center" style="margin-top: 3% ; margin-bottom: 3%">
+                    <h2 style="color: #603fb9">Selecione o briefing que deseja ver</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            @if($temGeral > 0)
+                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('veGeral')}}">Geral</a></button>
+                            @endif
+                            @if($temAnuncio > 0)
+                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('indexContaAnuncio' , ['name' => $cliente->name])}}">Criação de Conta Anúncio</a></button>
+                                @endif
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 10%">
+                </div>
+            </div>
+        </div>
+    </div>
+
     </body>
 
     <!-- MODAL DE CADASTRO DE PECA -->
@@ -193,7 +217,8 @@
             <div class="modal-content">
                 <h2 style="color: #FF5400 ; margin-top: 5% ; font-family: Lucida Console, Courier New, monospace" class="text-center">Adicionar Nova Peça</h2>
                 <div class="modal-body">
-                    <form style="margin-left: 3% ; margin-right: 3%">
+                    <form style="margin-left: 3% ; margin-right: 3%" method="post" action="{{route('subCredit' , ['id' => $cliente->id])}}">
+                        @csrf
                         <div class="form-row">
                             <div class="col-md-12">
                                 <select id="categoria" name="categoria" class="inputFino col-md-12">
@@ -206,28 +231,27 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-12">
-                                <select id="peca" name="peca" class="inputFino col-md-12">
+                                <select id="piece_id" name="piece_id" class="inputFino col-md-12">
                                     <option>Selecione a peca</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="inputFino" id="inputEmail4" placeholder="ID" required>
+                                <input type="text" name="id_service" class="inputFino" id="inputEmail4" placeholder="ID" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <input type="text" class="inputFino" id="valor" name="valor" placeholder="Valor" disabled>
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="inputFino col-md-12" id="inputAddress2" placeholder="Observacoes">
+                            <input type="text" class="inputFino col-md-12" id="observation" name="observation" placeholder="Observacoes">
                         </div>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success float-right">Salvar</button>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-success">Salvar</button>
-                </div>
+
             </div>
         </div>
     </div>
@@ -284,7 +308,7 @@
                         if (response.success === true) {
                             //$('select[name=peca]').empty();
                             $.each(response.data, function (item, value) {
-                                $('select[name=peca]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');;
+                                $('select[name=piece_id]').append('<option value="' + response.data[item]["id"] + '">' + response.data[item]["name"] + '</option>');;
                             });
                         } else {
                             console.log('n deu ');
@@ -297,7 +321,7 @@
 
     <script>
         $(document).ready(function () {
-            $('select[name="peca"]').on('change', function () {
+            $('select[name="piece_id"]').on('change', function () {
 
                 var peca_id = $(this).val(); //Pega o id da categoria
 

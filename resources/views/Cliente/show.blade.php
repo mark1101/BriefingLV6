@@ -58,7 +58,7 @@
                         <td>{{$c->service}}</td>
                         <td>{{$c->points_hired}}</td>
                         <td>{{$c->points}}</td>
-                        <td>{{$c->created_at}}</td>
+                        <td>{{$c->created_at->format("d-m-Y H:i")}}</td>
                         @if($c->active == "1")
                             <td><button class="btn btn-success align-content-center" style="border-radius: 50% "></button></td>
                         @endif
@@ -66,10 +66,15 @@
                             <td><button class="btn btn-danger align-content-center" style="border-radius: 50% "></button></td>
                         @endif
 
-
-                        <td>
-                            <button type="submit" name = "delete" id="delete" class="btn" style="background-color: #603fb9 ; color: white" data-toggle="modal" data-target="#modalDelete">Apagar</button>
-                        </td>
+                        @if($c->active == "2")
+                            <td>
+                                <button type="submit" name = "delete" id="delete" class="btn" style="background-color: #603fb9 ; color: white" ><a href="{{route('active' , ['id' => $c->id])}}">Reativar</a></button>
+                            </td>
+                        @endif
+                        @if($c->active == "1")
+                            <td>
+                                <button type="submit" name = "delete" id="delete" class="btn" style="background-color: #603fb9 ; color: white" ><a href="{{route('active' , ['id' => $c->id] )}}">Desativar</a></button>                            </td>
+                        @endif
                         <td>
                             <button type="submit" class="btn " data-toggle="modal" data-target="#modalUpdate"style="background-color: #603fb9 ; color: white">Editar</button>
                         </td>

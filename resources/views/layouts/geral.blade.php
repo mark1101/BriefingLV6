@@ -78,8 +78,10 @@
         margin-right: auto" src="{{asset('img/perfil.jpeg')}}">
         </div>
         <div class="d-flex w-100">
-                    <span class="menu-collapsed"
-                          style="text-transform: uppercase ;  margin-right: auto ; margin-left: auto ; display: block ; color: white ; margin-bottom: 9% ; margin-top: 3%">{{ Auth::user()->name}}</span>
+                    <span class="menu-collapsed" style="text-transform: uppercase ;  margin-right: auto ; margin-left: auto ; display: block ; color: white ; margin-bottom: 1% ; margin-top: 3%">{{ Auth::user()->name}}</span>
+        </div>
+        <div class="d-flex w-100">
+            <span class="menu-collapsed" style="text-transform: uppercase ;  margin-right: auto ; margin-left: auto ; display: block ; color: white ; margin-bottom: 9% ; margin-top: 1%">{{ Auth::user()->funcionario}}</span>
         </div>
         <HR WIDTH=100%>
     </a>
