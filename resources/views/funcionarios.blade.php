@@ -37,10 +37,10 @@
                     <td></td>
 
                     <td>
-                        <button type="submit" class="btn " data-toggle="modal" data-target="#modalUpdate"style="background-color: #603fb9 ; color: white">Editar</button>
+                        <button type="submit" class="btn " data-toggle="modal" data-target="#modalUpdate{{$f->id}}"style="background-color: #603fb9 ; color: white">Editar</button>
                     </td>
                     <td>
-                        <button type="submit" class="btn " data-toggle="modal" data-target="#modalDelete" style="background-color: #603fb9 ; color: white">Deletar</button>
+                        <button type="submit" class="btn " data-toggle="modal" data-target="#modalDelete{{$f->id}}" style="background-color: #603fb9 ; color: white">Deletar</button>
                     </td>
                    <!-- <td>
                         <button type="submit" class="btn " data-toggle="modal" data-target="#modalVisu"style="background-color: #603fb9 ; color: white"><a class="car" >Visualizar</a>
@@ -49,7 +49,7 @@
                 </tr>
 
                 <!-- Modal delete -->
-                <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modalDelete{{$f->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -70,7 +70,7 @@
                 </div>
 
                 <!-- Modal Update-->
-                <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modalUpdate{{$f->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">

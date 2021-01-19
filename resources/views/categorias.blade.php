@@ -24,8 +24,12 @@
             @foreach($cat as $c)
                 <tr>
                     <td>{{$c->name}}</td>
-                    <td><a href="">edt</a></td>
-                    <td><a href="">del</a></td>
+                    <td>
+                        <button type="submit" class="btn " data-toggle="modal" data-target="#modalUpdate{{$c->id}}"style="background-color: #603fb9 ; color: white">Editar</button>
+                    </td>
+                    <td>
+                        <button type="submit" class="btn " data-toggle="modal" data-target="#modalDelete{{$c->id}}" style="background-color: #603fb9 ; color: white">Deletar</button>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
@@ -45,6 +49,50 @@
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary float-right">Cadastrar</button>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal delete -->
+    <div class="modal fade" id="modalDelete{{$c->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Apagar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Deseja mesmo apagar a categoria {{$c->name}} ?</h5>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Deletar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Update-->
+    <div class="modal fade" id="modalUpdate{{$c->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edicao de Cliente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        Editando a Categoria {{$c->name}}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Salvar Alteracoes</button>
                 </div>
             </div>
         </div>

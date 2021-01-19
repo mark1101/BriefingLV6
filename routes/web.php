@@ -43,7 +43,24 @@ Route::group(['prefix' => '/cliente/cadastro-briefing'] , function (){
 });
 
 Route::get('/inicio' , function (){
-   return view('dashboardUser');
+    $cliente = \App\Client::all();
+    $total = count($cliente);
+
+    $funcionarios = \App\User::where('funcionario' , '<>' , 'Chefia')->get();
+    $totalFuncionarios = count($funcionarios);
+
+    $categorias = \App\Category::all();
+    $totalCategorias = count($categorias);
+
+    $pecas = \App\Piece::all();
+    $totalPecas = count($pecas);
+
+   return view('dashboardUser' , [
+       'totalClientes' => $total,
+       'totalFuncionarios' => $totalFuncionarios,
+       'totalCategorias' => $totalCategorias,
+       'totalPecas' => $totalPecas
+   ]);
 })->name('inicio');
 
 Route::get('/perfil' , 'UserController@indexPerfil')->name('perfilUser')->middleware('auth');

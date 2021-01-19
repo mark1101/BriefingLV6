@@ -76,7 +76,7 @@
                                 <button type="submit" name = "delete" id="delete" class="btn" style="background-color: #603fb9 ; color: white" ><a href="{{route('active' , ['id' => $c->id] )}}">Desativar</a></button>                            </td>
                         @endif
                         <td>
-                            <button type="submit" class="btn " data-toggle="modal" data-target="#modalUpdate"style="background-color: #603fb9 ; color: white">Editar</button>
+                            <button type="submit" class="btn " data-toggle="modal" data-target="#modalUpdate{{$c->id}}"style="background-color: #603fb9 ; color: white">Editar</button>
                         </td>
                         <td>
                             <button type="submit" class="btn " style="background-color: #603fb9 ; color: white"><a class="car" href="{{route('indexClienteInfo', ['name' => $c->name])}}">Visualizar</a>
@@ -84,29 +84,8 @@
                         </td>
                     </tr>
 
-                    <!-- Modal delete -->
-                    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Apagar</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <h5>Deseja mesmo apagar o cliente {{$c->name}} ?</h5>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Cancelar</button>
-                                    <button type="button" class="btn btn-primary">Deletar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Modal Update-->
-                    <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="modalUpdate{{$c->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">

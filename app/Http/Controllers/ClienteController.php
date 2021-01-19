@@ -61,7 +61,7 @@ class ClienteController extends Controller
 
         $total = count($anuncio) + count($geral);
 
-        $historico = CreditHistory::where('client_id' , $data['id'])->get();
+        $historico = CreditHistory::where('client_id' , $data['id'])->orderBy('created_at' , 'desc')->get();
 
 
         return view('Cliente.info', [

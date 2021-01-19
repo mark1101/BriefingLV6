@@ -108,16 +108,16 @@
                     <td>{{$p->name}}</td>
                     <td>{{$p->value}}</td>
                     <td>
-                        <button type="submit" class="btn " data-toggle="modal" data-target="#modalUpdate"style="background-color: #603fb9 ; color: white">Editar</button>
+                        <button type="submit" class="btn " data-toggle="modal" data-target="#modalUpdate{{$p->id}}"style="background-color: #603fb9 ; color: white">Editar</button>
                     </td>
                     <td>
-                        <button type="submit" name = "delete" id="delete" class="btn" style="background-color: #603fb9 ; color: white" data-toggle="modal" data-target="#modalDelete">Apagar</button>
+                        <button type="submit" name = "delete" id="delete" class="btn" style="background-color: #603fb9 ; color: white" data-toggle="modal" data-target="#modalDelete{{$p->id}}">Apagar</button>
                     </td>
                 </tr>
 
 
                 <!-- Modal delete -->
-                <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modalDelete{{$p->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -138,7 +138,7 @@
                 </div>
 
                 <!-- Modal Update-->
-                <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="modalUpdate{{$p->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
