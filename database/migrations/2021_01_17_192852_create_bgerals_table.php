@@ -20,20 +20,23 @@ class CreateBgeralsTable extends Migration
             $table->string('facebook');
             $table->string('site');
             $table->string('youtube');
+            $table->string('twitter');
             $table->string('blog');
             $table->string('tiktok');
-            $table->integer('state_id');
-            $table->integer('city_id');
-            $table->string('street');
-            $table->string('complement');
-            $table->string('cnpj');
+            $table->string('origem');
+            $table->string('history');
             $table->string('source');
             $table->string('transparency');
+            $table->string('proposito');
             $table->string('mission');
             $table->string('services');
+            $table->string('vision');
+            $table->string('slogan');
             $table->string('challenge');
             $table->string('objetive');
+            $table->string('meta');
             $table->string('differential');
+            $table->string('sex');
             $table->string('formation');
             $table->string('class');
             $table->string('location');
@@ -41,8 +44,10 @@ class CreateBgeralsTable extends Migration
             $table->string('power');
             $table->string('habits');
             $table->string('resume');
-            $table->string('competition');
+            $table->string('competitionD');
+            $table->string('competitionI');
             $table->string('persona');
+
 
             $table->timestamps();
         });

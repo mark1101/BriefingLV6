@@ -11,20 +11,23 @@ class Bgeral extends Model
         'instagram',
         'facebook',
         'site',
+        'twitter',
+        'history',
         'youtube',
         'tiktok',
-        'state_id',
-        'city_id',
-        'street',
-        'complement',
-        'cnpj',
+        'origem',
         'source',
         'transparency',
+        'proposito',
         'mission',
         'services',
+        'vision',
+        'slogan',
         'challenge',
         'objetive',
+        'meta',
         'differential',
+        'sex',
         'formation',
         'class',
         'location',
@@ -32,7 +35,12 @@ class Bgeral extends Model
         'power',
         'habits',
         'resume',
-        'competition',
+        'competitionD',
+        'competitionI',
         'persona',
     ];
+
+    public function cliente(){
+        return $this->hasOne(Client::class, 'id', 'client_id');
+    }
 }

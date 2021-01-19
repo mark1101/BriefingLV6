@@ -22,6 +22,7 @@
                                     <li id="quinta"><strong></strong></li>
                                     <li id="sexta"><strong></strong></li>
                                     <li id="setima"><strong></strong></li>
+                                    <li id="oitava"><strong></strong></li>
                                 </ul> <!-- fieldsets -->
                                 <fieldset>
                                     <div class="form-card">
@@ -34,77 +35,25 @@
                                         <br>
                                         <h5 style="color: black"><b>Site</b></h5>
                                         <input type="text" name="site" placeholder=""/>
+                                        <h5 style="color: black"><b>Twitter</b></h5>
+                                        <input type="text" name="twitter" placeholder=""/>
                                         <h5 style="color: black"><b>Youtube</b></h5>
                                         <input type="text" name="youtube" placeholder=""/>
                                         <h5 style="color: black"><b>Blog</b></h5>
                                         <input type="text" name="blog" placeholder=""/>
                                         <h5 style="color: black"><b>TikTok</b></h5>
                                         <input type="text" name="tiktok" placeholder=""/>
-                                    </div>
-                                    <input type="button" name="next" class="next action-button" value="Próximo"/>
-                                </fieldset>
-                                <fieldset>
-                                    <div class="form-card">
-                                        <br>
-                                        <h5 style="color: black"><b>Estado</b></h5>
-                                        <select class="form-control" name="state_id">
-                                            @foreach($estado as $e)
-                                                <option value="{{$e->id}}">{{$e->name}}</option>
-                                            @endforeach
-                                        </select>
-                                        <br>
-                                        <h5 style="color: black"><b>Cidade</b></h5>
-                                        <select class="form-control" name="city_id">
-                                            <option>Selecione a cidade</option>
-                                        </select>
-                                        <br>
-                                        <h5 style="color: black"><b>Rua</b></h5>
-                                        <input type="text" name="street" placeholder=""/>
-                                        <h5 style="color: black"><b>Complemento</b></h5>
-                                        <input type="text" name="complement" placeholder=""/>
-                                    </div>
-                                    <input type="button" name="previous" class="previous action-button-previous"
-                                           value="Anterior"/>
-                                    <input type="button" name="next" class="next action-button" value="Próximo"/>
-                                </fieldset>
-                                <fieldset>
-                                    <div class="form-card">
-                                        <h5 style="color: black"><b>Origem do nome</b></h5>
-                                        <input type="text" name="cnpj" placeholder=""/>
-                                        <br>
-                                        <h5 style="color: black"><b>Palavras-chave (Hashtags mais usadas da área)</b>
-                                        </h5>
+                                        <h5 style="color: black"><b>Palavras-chave (Hashtags mais usadas da área)</b></h5>
                                         <textarea type="text" name="source" placeholder=""></textarea>
-                                        <br>
-                                        <h5 style="color: black"><b>Oque queremos passar ao público através do visual?
-                                                (Estilo, paleta de cores, fontes)</b></h5>
-                                        <textarea type="text" name="transparency" placeholder=""></textarea>
-                                        <br>
-                                        <h5 style="color: black"><b>Missão - Propósito</b></h5>
-                                        <textarea type="text" name="mission" placeholder=""></textarea>
                                     </div>
-                                    <input type="button" name="previous" class="previous action-button-previous"
-                                           value="Anterior"/>
                                     <input type="button" name="next" class="next action-button" value="Próximo"/>
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
-                                        <h5 style="color: black"><b>Serviços/Produtos: (Qual a sua empresa oferecerá?
-                                                Que soluções eles trazem aos clientes?)</b></h5>
-                                        <textarea type="text" name="services" placeholder=""></textarea>
-                                        <br>
-                                        <h5 style="color: black"><b>Desafios: Quais são os principais desafios da
-                                                empresa?</b></h5>
-                                        <textarea type="text" name="challenge" placeholder=""></textarea>
-                                        <br>
-                                        <h5 style="color: black"><b>Objetivos: Quais são os objetivos da empresa? Oque
-                                                se quer alcaçar? Quais as metas?</b></h5>
-                                        <textarea type="text" name="objetive" placeholder=""></textarea>
-                                        <br>
-                                        <h5 style="color: black"><b>Qual o principal diferencial/atributo/proposta de
-                                                valor que deverá ser comunicado. O que diferencia esse produto/serviço
-                                                da concorrência. Oque faz ser único?</b></h5>
-                                        <textarea type="text" name="differential" placeholder=""></textarea>
+                                        <h5 style="color: black"><b>História</b></h5>
+                                        <textarea type="text" name="history" placeholder=""></textarea>
+                                        <h5 style="color: black"><b>Origem do nome</b></h5>
+                                        <input type="text" name="origem" placeholder=""/>
                                     </div>
                                     <input type="button" name="previous" class="previous action-button-previous"
                                            value="Anterior"/>
@@ -118,26 +67,31 @@
                                                 <select class="form-control" name="sex">
                                                     <option>Homem</option>
                                                     <option>Mulher</option>
+                                                    <option>Home e Mulher</option>
                                                 </select>
                                             </div>
                                             <div class="col-3 float-right">
                                                 <h5 style="color: black"><b>Formação Educacional</b></h5>
                                                 <select class="form-control" name="formation">
-                                                    <option>op1</option>
-                                                    <option>op2</option>
+                                                    <option>Formacao Básica</option>
+                                                    <option>Formacao Técnica</option>
+                                                    <option>Formacao Superior</option>
                                                 </select>
                                             </div>
                                             <div class="col-3 float-right">
                                                 <h5 style="color: black"><b>Classe Social</b></h5>
                                                 <select class="form-control" name="class">
-                                                    <option>op1</option>
-                                                    <option>op2</option>
+                                                    <option>Classe A: mais de 15 salários mínimos</option>
+                                                    <option>Classe B: de 5 a 15 salários mínimos</option>
+                                                    <option>Classe C: de 3 a 5 salários mínimos</option>
+                                                    <option>Classe D: de 1 a 3 salários mínimos</option>
+                                                    <option>Classe E: até 1 salário mínimo</option>
                                                 </select>
                                             </div>
                                         </div>
 
                                         <h5 style="color: black"><b>Localização</b></h5>
-                                        <input type="text" name="location" placeholder="Ex: 10 - 20">
+                                        <input type="text" name="location" placeholder="">
                                         <h5 style="color: black"><b>Idade</b></h5>
                                         <input type="text" name="age" placeholder="Ex: 10 - 20">
                                         <h5 style="color: black"><b>Poder Aquisitivo</b></h5>
@@ -146,21 +100,71 @@
                                         <textarea type="text" name="habits" placeholder=""></textarea>
                                         <h5 style="color: black"><b>Resumo / informações Adicionais</b></h5>
                                         <textarea type="text" name="resume" placeholder=""></textarea>
+                                        <h5 style="color: black"><b>Descreva uma persona</b></h5>
+                                        <textarea type="text" name="persona" placeholder=""></textarea>
                                     </div>
-                                        <input type="button" name="previous" class="previous action-button-previous"
-                                               value="Anterior"/>
-                                        <input type="button" name="next" class="next action-button" value="Próximo"/>
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                           value="Anterior"/>
+                                    <input type="button" name="next" class="next action-button" value="Próximo"/>
                                 </fieldset>
                                 <fieldset>
                                     <div class="form-card">
-                                        <h5 style="color: black"><b>Concorrência: Listas os principais concorrentes e
-                                                uma breve descrição de que tipo de ameaça esses concorrêntes
-                                                apresentam.</b></h5>
-                                        <textarea type="text" name="competition" placeholder=""></textarea>
+                                        <h5 style="color: black"><b>Serviços/Produtos: (Qual a sua empresa oferecerá?
+                                                Que soluções eles trazem aos clientes?)</b></h5>
+                                        <textarea type="text" name="services" placeholder=""></textarea>
                                         <br>
-                                        <h5 style="color: black"><b>Descreva de forma detalhada uma persona desta
-                                                empresa</b></h5>
-                                        <textarea type="text" name="persona" placeholder=""></textarea>
+                                        <h5 style="color: black"><b>Qual o principal diferencial/atributo/proposta de
+                                                valor que deverá ser comunicado. O que diferencia esse produto/serviço
+                                                da concorrência. Oque faz ser único?</b></h5>
+                                        <textarea type="text" name="differential" placeholder=""></textarea>
+                                    </div>
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                           value="Anterior"/>
+                                    <input type="button" name="next" class="next action-button" value="Próximo"/>
+                                </fieldset>
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h5 style="color: black"><b>Propósito Geral</b></h5>
+                                        <textarea type="text" name="proposito" placeholder=""></textarea>
+                                        <h5 style="color: black"><b>Missão - Propósito</b></h5>
+                                        <textarea type="text" name="mission" placeholder=""></textarea>
+
+                                        <h5 style="color: black"><b>Missão</b></h5>
+                                        <textarea type="text" name="mission" placeholder=""></textarea>
+                                        <br>
+                                        <h5 style="color: black"><b>Visão e Valores da Empresa</b></h5>
+                                        <textarea type="text" name="vision" placeholder=""></textarea>
+                                        <br>
+                                        <h5 style="color: black"><b>Slogan</b></h5>
+                                        <textarea type="text" name="slogan" placeholder=""></textarea>
+                                        <br>
+                                    </div>
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                           value="Anterior"/>
+                                    <input type="button" name="next" class="next action-button" value="Próximo"/>
+                                </fieldset>
+
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h5 style="color: black"><b>Objetivo</b></h5>
+                                        <textarea type="text" name="objetive" placeholder=""></textarea>
+                                        <h5 style="color: black"><b>Meta</b></h5>
+                                        <textarea type="text" name="meta" placeholder=""></textarea>
+                                    </div>
+                                    <input type="button" name="previous" class="previous action-button-previous"
+                                           value="Anterior"/>
+                                    <input type="button" name="next" class="next action-button" value="Próximo"/>
+                                </fieldset>
+
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h5 style="color: black"><b>Concorrência direta:</b></h5>
+                                        <textarea type="text" name="competitionD" placeholder=""></textarea>
+                                        <h5 style="color: black"><b>Concorrência indireta:</b></h5>
+                                        <textarea type="text" name="competitionI" placeholder=""></textarea>
+                                        <br>
+                                        <h5 style="color: black"><b>Desafios</b></h5>
+                                        <textarea type="text" name="challenge" placeholder=""></textarea>
                                     </div>
                                     <input type="button" name="previous" class="previous action-button-previous"
                                            value="Anterior"/>
@@ -386,6 +390,10 @@
         #progressbar #setima:before {
             font-family: FontAwesome;
             content: "7"
+        }
+        #progressbar #oitava:before {
+            font-family: FontAwesome;
+            content: "8"
         }
 
         #progressbar li:before {

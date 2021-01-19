@@ -25,7 +25,7 @@
 
         var options = {
             chart: {
-                title: 'Movimento Mensal',
+                title: 'Movimento Mensal de {{$cliente->name}}',
                 subtitle: 'Cliente cadastrado em {{$cliente->created_at->format("d-m-Y")}}',
             }
         };

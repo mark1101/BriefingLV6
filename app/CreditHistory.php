@@ -23,4 +23,8 @@ class CreditHistory extends Model
     {
         return $this->hasOne(Piece::class, 'id', 'piece_id');
     }
+
+    public function funcionario(){
+        return $this->hasOne(User::class, 'id' , 'funcionario_id');
+    }
 }

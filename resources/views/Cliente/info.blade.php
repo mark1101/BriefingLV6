@@ -97,7 +97,7 @@
         </div>
 
         <div class="row" style="margin-top: 3%">
-            <div class="col-md-8">
+            <div class="col-md-6">
                 <div class="card text-center" style=" -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.3);
                     -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.3);
                     box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.3);">
@@ -109,7 +109,7 @@
                         </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card text-center" style="-webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.3);
             -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.3);
             box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.3);">
@@ -120,31 +120,22 @@
                         <table class="table table-striped" style="height: 250px; width: 100% ; overflow: auto">
                             <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Peca</th>
+                                <th scope="col">Cadastrado por:</th>
+                                <th scope="col">Data</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+
+                            @foreach($historico as $h)
+                                <tr>
+                                    <th>{{$h->value}}</th>
+                                    <td>{{($h->peca)->name}}</td>
+                                    <td>{{($h->funcionario)->name}}</td>
+                                    <td>{{$h->created_at->format("d/m/Y")}}</td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -195,7 +186,7 @@
                     <div class="container">
                         <div class="row">
                             @if($temGeral > 0)
-                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('veGeral')}}">Geral</a></button>
+                                <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('veGeral' , ['name' => $cliente->name])}}">Geral</a></button>
                             @endif
                             @if($temAnuncio > 0)
                                 <button type="button" class="btn btn-danger espacamentoBotao"><a href="{{route('indexContaAnuncio' , ['name' => $cliente->name])}}">Criação de Conta Anúncio</a></button>

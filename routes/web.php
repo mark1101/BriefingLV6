@@ -67,5 +67,5 @@ Route::get('ativadesativa/{id}', 'ClienteController@active')->name('active')->mi
 
 //VISUALIZACAO DE BRIEFING
 Route::group(['prefix' => '/cliente/visualizacao-briefing'] , function (){
-    Route::get('mostraGeral', 'VeBriefingController@indexGeral')->name('veGeral')->middleware('auth');
+    Route::get('mostraGeral/{name}', 'VeBriefingController@indexGeral')->name('veGeral')->middleware('auth');
 });
