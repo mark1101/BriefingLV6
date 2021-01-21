@@ -86,3 +86,6 @@ Route::get('ativadesativa/{id}', 'ClienteController@active')->name('active')->mi
 Route::group(['prefix' => '/cliente/visualizacao-briefing'] , function (){
     Route::get('mostraGeral/{name}', 'VeBriefingController@indexGeral')->name('veGeral')->middleware('auth');
 });
+
+//GERAL PDF
+Route::get('/geralPdf/{id}' , 'BriefingController@createPDFGeral')->name('pdfbGeral');

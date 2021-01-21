@@ -8,6 +8,7 @@ use App\Category;
 use App\Client;
 use App\Piece;
 use App\State;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
 class BriefingController extends Controller
@@ -62,5 +63,15 @@ class BriefingController extends Controller
         if (Bgeral::create($data)){
             return redirect()->route('indexClienteInfo' , ['name' => $dataa->name]);
         }
+    }
+
+    public function createPDFGeral($cl)
+    {
+
+        $cliente = Bgeral::where('client_id' , $cl)->get();
+        $data = $cliente[count($cliente) - 1];
+
+        $pdf = PDF::loadView('Pdf.bGeral' , compact('data'));
+        return $pdf->setPaper('a4')->stream('Briefing_geral.pdf');
     }
 }

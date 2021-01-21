@@ -6,7 +6,7 @@
     <body style="background-color: #f2f2f2">
 
     <div class="card" style="margin-top: 2% ; padding: 3px 30px 10px 30px">
-            <h1 style="text-align: center ; margin-top: 2% ; margin-bottom: 3%">Briefing Geral </h1>
+            <h1 style="text-align: center ; margin-top: 2% ; margin-bottom: 3%">Briefing Geral {{$c->name}}</h1>
         <div class="row" style="justify-content: center">
             <a href="#social" data-toggle="modal" style="margin-top: 2% ;  margin-right: 2%"><img src="{{asset('img/social.png')}}"></a>
             <a href="#concorrentes" data-toggle="modal" style="margin-top: 2% ; margin-right: 2%"><img src="{{asset('img/concorrentes.png')}}"></a>
@@ -26,6 +26,7 @@
                     <span class="input-group-text" id="inputGroupPrepend2">©</span>
                 </div>
                 <input type="text" class="form-control" value="/cliente/visualizacao-briefing/mostraGeral/{{$c->name}}" aria-describedby="">
+                <button type="button" class="btn btn-success"><a style="color: white" href="{{route('pdfbGeral' , ['id' => $c->id])}}">Gerar Pdf</a></button>
             </div>
         </div>
     </div>
