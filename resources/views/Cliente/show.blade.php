@@ -1,6 +1,8 @@
 @extends('layouts.geral')
 
 @section('content')
+    <body style="background-color: #f2f2f2">
+
     <div class="col containerMargin" style="margin-top: 5%">
         <form class="form-inline">
             <div class="form-group col-md-10">
@@ -10,43 +12,149 @@
                     href="{{ route('indexClienteCadastro') }}" style="color: white">Cadastrar Cliente</a></button>
         </form>
 
-        <input class="form-control form-control-lg" type="search" placeholder="Pesquisar cliente" aria-label="Search"
-               style="margin-top: 2%">
-        <nav aria-label="Navegação de página exemplo" style="margin-top: 5%;">
-            <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Todos Clientes</a></li>
-                <li class="page-item"><a class="page-link" href="#">Ativos</a></li>
-                <li class="page-item"><a class="page-link" href="#">Inativos</a></li>
-            </ul>
-        </nav>
-        <table class="table table-striped" style="margin-top: 2%">
-            <thead>
-            <tr>
-                <th scope="col">Clientes</th>
-                <th scope="col">Servico</th>
-                <th scope="col">Ultima modificacao</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Dal Pozzo</td>
-                <td>Assessoria</td>
-                <td>27/11/2020 - Ana Paula</td>
-                <td>
-                    <button type="submit" class="btn " style="background-color: #603fb9 ; color: white">Apagar</button>
-                </td>
-                <td>
-                    <button type="submit" class="btn " style="background-color: #603fb9 ; color: white">Editar</button>
-                </td>
-                <td>
-                    <button type="submit" class="btn " style="background-color: #603fb9 ; color: white">Visualizar
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+
+
+        <form id="filters" name="filters" style="margin-bottom: 4%" action="{{route('buscaActive')}}" method="post">
+            @csrf
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control col-form-label-lg" placeholder="Nome do Cliente">
+                </div>
+                <input type="hidden" name="filterValues" id="filterValues">
+
+                <button data-id="ativos" data-checked="false" type="button"
+                        class="filter-btn btn btn-teal espacoBotao">
+                    Ativos
+                </button>
+
+                <button data-id="naoativo" data-checked="false" type="button"
+                        class="filter-btn btn btn-teal espacoBotao">
+                    Inativos
+                </button>
+                <button type="submit" id="pesquisa" class="btn btn-success espacoBotao">
+                    Pesquisar
+                </button>
+            </div>
+
+        </form>
+
+            <table class="table table-striped" style="margin-top: 2% ; background-color: white ; border-radius: 8px">
+                <thead>
+                <tr>
+                    <th scope="col">Clientes</th>
+                    <th scope="col">Categoria </th>
+                    <th scope="col">Pontos Contratado </th>
+                    <th scope="col">Pontos Atualizado</th>
+                    <th scope="col">Cadastrado em </th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($clientes as $c)
+                    <tr>
+                        <td>{{$c->name}}</td>
+                        <td>{{$c->service}}</td>
+                        <td>{{$c->points_hired}}</td>
+                        <td>{{$c->points}}</td>
+                        <td>{{$c->created_at->format("d-m-Y H:i")}}</td>
+                        @if($c->active == "1")
+                            <td><button class="btn btn-success align-content-center" style="border-radius: 50% "></button></td>
+                        @endif
+                        @if($c->active == "2")
+                            <td><button class="btn btn-danger align-content-center" style="border-radius: 50% "></button></td>
+                        @endif
+
+                        @if($c->active == "2")
+                            <td>
+                                <button type="submit" name = "delete" id="delete" class="btn" style="background-color: #603fb9 ; color: white" ><a href="{{route('active' , ['id' => $c->id])}}">Reativar</a></button>
+                            </td>
+                        @endif
+                        @if($c->active == "1")
+                            <td>
+                                <button type="submit" name = "delete" id="delete" class="btn" style="background-color: #603fb9 ; color: white" ><a href="{{route('active' , ['id' => $c->id] )}}">Desativar</a></button>                            </td>
+                        @endif
+                        <td>
+                            <button type="submit" class="btn " data-toggle="modal" data-target="#modalUpdate{{$c->id}}"style="background-color: #603fb9 ; color: white">Editar</button>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn " style="background-color: #603fb9 ; color: white"><a class="car" href="{{route('indexClienteInfo', ['name' => $c->name])}}">Visualizar</a>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <!-- Modal Update-->
+                    <div class="modal fade" id="modalUpdate{{$c->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edicao de Cliente</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        Editando Cliente {{$c->name}}
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                    <button type="button" class="btn btn-primary">Salvar Alteracoes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                @endforeach
+
+                </tbody>
+            </table>
     </div>
+
+    <style>
+        .espacoBotao{
+            margin-right: 2%;
+        }
+        .car , a:hover{
+            color: white;
+        }
+    </style
 @endsection
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var selectedFilters = [];
+            $('.filter-btn').on('click', function () {
+
+                var clickedButton = $(this);
+                var checked = !Boolean(clickedButton.data('checked'));
+                clickedButton.data('checked', checked);
+                var dataId = clickedButton.data('id');
+                clickedButton.toggleClass("btn-info");
+                clickedButton.toggleClass("btn-danger");
+                if (!selectedFilters.includes(dataId) && checked) {
+                    selectedFilters.push(dataId);
+                } else {
+                    const index = selectedFilters.indexOf(dataId);
+                    if (index > -1) {
+                        selectedFilters.splice(index, 1);
+                    }
+                }
+                var formattedFilters = selectedFilters.join(",");
+                $('#filterValues').val(formattedFilters);
+
+            });
+        });
+
+    </script>
+
+
+
+

@@ -68,76 +68,118 @@
 </nav>
 
 
-<!-- Bootstrap row -->
-<div class="row" id="body-row">
-    <!-- Sidebar -->
-    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
-        <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
-        <!-- Bootstrap List Group -->
-        <ul class="list-group">
+<div class="sidenav">
+    <a href="{{route('inicio')}}">
+        <div class="redondo">
+            <img style="  margin-top: 5%;
+        border-radius: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto" src="{{asset('img/perfil.jpeg')}}">
+        </div>
+        <div class="d-flex w-100">
+                    <span class="menu-collapsed" style="text-transform: uppercase ;  margin-right: auto ; margin-left: auto ; display: block ; color: white ; margin-bottom: 1% ; margin-top: 3%">{{ Auth::user()->name}}</span>
+        </div>
+        <div class="d-flex w-100">
+            <span class="menu-collapsed" style="text-transform: uppercase ;  margin-right: auto ; margin-left: auto ; display: block ; color: white ; margin-bottom: 9% ; margin-top: 1%">{{ Auth::user()->funcionario}}</span>
+        </div>
+        <HR WIDTH=100%>
+    </a>
+    <a href="{{route('inicio')}}">
+        <span class="material-icons">home</span>
+        <span class="menu-collapsed">Inicio</span>
+    </a>
+    <a href="{{route('perfilUser')}}">
+        <span class="material-icons">account_circle</span>
+        <span class="menu-collapsed">Meu Perfil</span>
+    </a>
+    @if(Auth::user()->funcionario == "Chefia")
+        <a href="{{route('indexFuncionario')}}">
+            <span class="material-icons">emoji_people</span>
+            <span class="menu-collapsed">Funcionários</span>
+        </a>
+    @endif
+    <a href="{{route('indexClienteShow')}}">
+        <span class="material-icons">supervisor_account</span>
+        <span class="menu-collapsed">Clientes</span>
+    </a>
+    @if(Auth::user()->funcionario == "Chefia")
+        <a href="{{route('indexPontos')}}">
+            <span class="material-icons">table_chart</span>
+            <span class="menu-collapsed">Pontos</span>
+        </a>
+    @endif
+    <a href="#contact">
+        <span class="material-icons">cached</span>
+        <span class="menu-collapsed">Configuracao</span>
+    </a>
+</div>
 
-            <div class="redondo">
-                <img style="  margin-top: 5%;
-    border-radius: 50%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto" src="{{asset('img/perfil.jpeg')}}">
-            </div>
+<div class="main containerMargin">
 
-            <div class="d-flex w-100">
-                <span class="menu-collapsed"
-                      style="text-transform: uppercase ;  margin-right: auto ; margin-left: auto ; display: block ; color: white ; margin-bottom: 9% ; margin-top: 2%">{{ Auth::user()->name}}</span>
-            </div>
-        <!-- <div class="d-flex w-100">
-                <span class="menu-collapsed" style=" ; margin-right: auto ; margin-left: auto ; display: block ; color: white ; margin-bottom: 9%"><b>{{ Auth::user()->funcionario }}</b></span>
-            </div> -->
-            <a href="{{route('inicio')}}" class="list-group-item">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="material-icons">home</span>
-                    <span class="fa fa-tasks fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Inicio</span>
-                </div>
-            </a>
+    @yield('content')
 
-            <a href="{{route('perfilUser')}}" class="list-group-item">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="material-icons">account_circle</span>
-                    <span class="fa fa-tasks fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Meu Perfil</span>
-                </div>
-            </a>
+</div><!-- Main Col END -->
+
+<div class="">
+
+</div>
+
+<style>
+    body {
+        font-family: "Lato", sans-serif;
+        margin-bottom: 5%;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 200px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #603fb9;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #babfbc;
+        margin-left: 5px;
+        display: block;
+    }
+
+    .sidenav a:hover {
+        color: whitesmoke;
+    }
+
+    .main {
+        margin-left: 240px; /* Same as the width of the sidenav */
+        margin-right: 40px;
+    }
+
+    .fixarRodape {
+        bottom: 0;
+        position: fixed;
+        width: 100%;
+        text-align: center;
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+    }
+</style>
 
 
-            <a href="{{route('indexClienteShow')}}" class="list-group-item">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="material-icons">supervisor_account</span>
-                    <span class="fa fa-tasks fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Clientes</span>
-                </div>
-            </a>
-            <a href="###" class="list-group-item">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="material-icons">cached</span>
-                    <span class="fa fa-tasks fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Configuracao</span>
-                </div>
-            </a>
-        </ul><!-- List Group END-->
-    </div><!-- sidebar-container END -->
 
-    <!-- MAIN -->
-
-    <div class="col containerMargin">
-
-        @yield('content')
-
-    </div><!-- Main Col END -->
-
-</div><!-- body-row END -->
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
@@ -145,126 +187,5 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
-<script>
-    // Hide submenus
-    $('#body-row .collapse').collapse('hide');
-
-    // Collapse/Expand icon
-    $('#collapse-icon').addClass('fa-angle-double-left');
-
-    // Collapse click
-    $('[data-toggle=sidebar-colapse]').click(function () {
-        SidebarCollapse();
-    });
-
-    function SidebarCollapse() {
-        $('.menu-collapsed').toggleClass('d-none');
-        $('.sidebar-submenu').toggleClass('d-none');
-        $('.submenu-icon').toggleClass('d-none');
-        $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
-
-        // Treating d-flex/d-none on separators with title
-        var SeparatorTitle = $('.sidebar-separator-title');
-        if (SeparatorTitle.hasClass('d-flex')) {
-            SeparatorTitle.removeClass('d-flex');
-        } else {
-            SeparatorTitle.addClass('d-flex');
-        }
-
-        // Collapse/Expand icon
-        $('#collapse-icon').toggleClass('fa-angle-double-left fa-angle-double-right');
-    }
-</script>
-
-<style>
-    #body-row {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    #sidebar-container {
-        min-height: 100vh;
-        background-color: #603fb9;
-        padding: 0;
-    }
-
-    /* Sidebar sizes when expanded and expanded */
-    .sidebar-expanded {
-        width: 230px;
-    }
-
-    .sidebar-collapsed {
-        width: 60px;
-    }
-
-    /* Menu item*/
-    #sidebar-container .list-group a {
-        height: 50px;
-        color: white;
-    }
-
-    /* Submenu item*/
-    #sidebar-container .list-group .sidebar-submenu a {
-        height: 45px;
-        padding-left: 30px;
-    }
-
-    .sidebar-submenu {
-        font-size: 0.9rem;
-    }
-
-    /* Separators */
-    .sidebar-separator-title {
-        background-color: #603fb9;
-        height: 35px;
-    }
-
-    .sidebar-separator {
-        background-color: #603fb9;
-        height: 25px;
-    }
-
-    .logo-separator {
-        background-color: #603fb9;
-        height: 60px;
-    }
-
-    .list-group-item {
-        background-color: #603fb9;
-    }
-
-    .list-group-item-lik {
-        background-color: white;
-        color: black;
-    }
-
-    /* Closed submenu icon */
-    #sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
-        content: " \f0d7";
-        font-family: FontAwesome;
-        display: inline;
-        text-align: right;
-        padding-left: 10px;
-        background-color: #603fb9;
-    }
-
-    /* Opened submenu icon */
-    #sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
-        content: " \f0da";
-        font-family: FontAwesome;
-        display: inline;
-        text-align: right;
-        padding-left: 10px;
-        background-color: #603fb9;
-    }
-
-    .containerMargin {
-        margin-left: 3%;
-        margin-right: 3%;
-    }
-</style>
-
-
 </body>
 </html>
-
