@@ -14,8 +14,8 @@ class CreatePiecesTable extends Migration
     public function up()
     {
         Schema::create('pieces', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->Integer('id_category')->unsigned()->default(0);
+            $table->increments('id');
+            $table->Integer('id_category')->unsigned();
             $table->String('name');
             $table->Double('value');
             $table->timestamps();

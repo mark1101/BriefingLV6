@@ -10,9 +10,7 @@ class CityTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        DB::table('cities')->delete();
-
+    { 
         // Acre
         DB::table('cities')->insert(['id_state' => 1, 'name' => 'Acrelândia']);
         DB::table('cities')->insert(['id_state' => 1, 'name' => 'Assis Brasil']);
